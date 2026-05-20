@@ -1,0 +1,115 @@
+/* Reset Dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container utama dioptimalkan khusus untuk Mobile Screen */
+.app-container {
+    width: 100%;
+    max-width: 480px; /* Batasi selebar layar HP agar tetap rapi jika dibuka di desktop */
+    min-height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header Bergaya Premium */
+.header {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    padding: 30px 20px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.welcome-section span {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.welcome-section h1 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.badge-kelas {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(5px);
+}
+
+/* Area Konten */
+.main-content {
+    padding: 20px;
+    flex: 1;
+}
+
+.loading, .error-message {
+    text-align: center;
+    padding: 40px;
+    color: #666;
+    font-size: 14px;
+}
+
+.error-message {
+    color: #e74c3c;
+}
+
+/* Kartu Data Santri (Card Premium) */
+.data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.santri-card {
+    background: #ffffff;
+    border: 1px solid #eef2f5;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s;
+}
+
+/* Baris Informasi di dalam Kartu */
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed #f0f4f8;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-size: 13px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: right;
+}
