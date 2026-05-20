@@ -1,115 +1,304 @@
-/* Reset Dasar */
+/* Desain UI Premium oleh Gemini - Dioptimalkan untuk Mobile */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #f8fafc;
+    color: #1e293b;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
-/* Container utama dioptimalkan khusus untuk Mobile Screen */
 .app-container {
     width: 100%;
-    max-width: 480px; /* Batasi selebar layar HP agar tetap rapi jika dibuka di desktop */
-    min-height: 100vh;
+    max-width: 450px;
     background-color: #ffffff;
-    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    min-height: 100vh;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
+    position: relative;
+}
+
+.page-wrapper {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease-out;
 }
 
-/* Header Bergaya Premium */
-.header {
-    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-    color: white;
-    padding: 30px 20px;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TAMPILAN HALAMAN LOGIN PREMIUM --- */
+.login-header {
+    padding: 60px 30px 30px 30px;
+    text-align: center;
+}
+
+.logo-area {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    border-radius: 22px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
 }
 
-.welcome-section span {
+.login-header h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.5px;
+}
+
+.login-header p {
     font-size: 14px;
-    opacity: 0.8;
+    color: #64748b;
+    margin-top: 10px;
+    line-height: 1.6;
 }
 
-.welcome-section h1 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-top: 4px;
-}
-
-.badge-kelas {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    backdrop-filter: blur(5px);
-}
-
-/* Area Konten */
-.main-content {
-    padding: 20px;
+.login-body {
+    padding: 0 30px;
     flex: 1;
 }
 
-.loading, .error-message {
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 15px;
+    font-weight: 600;
+    color: #0f172a;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #0284c7;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+}
+
+#btn-login {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
+    transition: all 0.2s;
+}
+
+#btn-login:active {
+    transform: scale(0.98);
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 13px;
+    font-weight: 600;
     text-align: center;
-    padding: 40px;
-    color: #666;
-    font-size: 14px;
+    margin-top: 15px;
 }
 
-.error-message {
-    color: #e74c3c;
+.login-footer {
+    padding: 30px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #94a3b8;
 }
 
-/* Kartu Data Santri (Card Premium) */
-.data-container {
+/* --- TAMPILAN DASHBOARD PREMIUM --- */
+.main-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 30px 24px 40px 24px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+}
+
+.header-top {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.badge-status {
+    background: rgba(14, 165, 233, 0.2);
+    color: #38bdf8;
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(14, 165, 233, 0.3);
+}
+
+.btn-logout {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
     gap: 16px;
 }
 
-.santri-card {
-    background: #ffffff;
-    border: 1px solid #eef2f5;
+.avatar {
+    width: 54px;
+    height: 54px;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 16px;
-    padding: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    transition: transform 0.2s;
-}
-
-/* Baris Informasi di dalam Kartu */
-.info-row {
     display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px dashed #f0f4f8;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.info-row:last-child {
-    border-bottom: none;
-}
-
-.info-label {
-    font-size: 13px;
-    color: #7f8c8d;
+.profile-text span {
+    font-size: 12px;
+    color: #94a3b8;
     font-weight: 500;
 }
 
-.info-value {
+.profile-text h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 2px;
+}
+
+.dashboard-body {
+    padding: 24px;
+}
+
+.section-title {
     font-size: 14px;
-    color: #2c3e50;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+/* Baris List Info Premium modern (Card Rows) */
+.premium-card-row {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+}
+
+.card-icon {
+    width: 42px;
+    height: 42px;
+    background: #f0fdf4; /* Warna dasar lembut hijau, bisa disesuaikan */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.card-info-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.label-title {
+    font-size: 12px;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.value-content {
+    font-size: 15px;
+    color: #0f172a;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+/* --- OVERLAY LOADING SCREEN --- */
+.overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    border-radius: inherit;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #0284c7;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.overlay p {
+    font-size: 14px;
     font-weight: 600;
-    text-align: right;
+    color: #334155;
 }
