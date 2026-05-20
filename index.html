@@ -3,189 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Santri Attauhidiyyah</title>
+    <title>Monitoring Santri Premium</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts & FontAwesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <div class="app-container">
         
-        <div id="login-page" class="page-wrapper login-bg">
-            <div class="login-card">
-                <div class="login-logo">🕌</div>
-                <h2>Portal Wali Santri</h2>
-                <p>MDS Kelas 3 Ibtida B - Attauhidiyyah</p>
-                
-                <div class="form-group">
-                    <label>Nomor Induk Santri (NIS)</label>
-                    <input type="number" id="nis-input" placeholder="Masukkan nomor NIS..." inputmode="numeric">
-                </div>
-                <button id="btn-login" onclick="prosesLogin()">Masuk Dashboard</button>
-                <div id="login-error" class="error-text"></div>
-            </div>
-        </div>
-
-        <div id="dashboard-page" class="page-wrapper" style="display: none;">
+        <!-- HEADER UTAMA -->
+        <header class="main-header">
+            <div class="header-badge">STATUS: <span class="status-aktif">Aktif (Semester 1)</span></div>
+            <h1 class="student-name">MUHAMMAD AL-FATIH</h1>
+            <p class="student-meta"><i class="fa-solid fa-id-card"></i> NIS: 232403001 &nbsp;|&nbsp; <i class="fa-solid fa-location-dot"></i> Demak, Jawa Tengah</p>
             
-            <header class="main-header">
-                <div class="header-top">
-                    <p id="alamat-santri" class="alamat-text">KEDAWUNG RT/RW 8/17 BOJONG-TEGAL- JATENG</p>
-                    <button class="btn-logout" onclick="logout()">Keluar</button>
-                </div>
-                <h1 id="nama-santri" class="nama-text">Ahmad Dairobi</h1>
-            </header>
+            <div class="reg-status">
+                <span>Status Pendaftaran:</span>
+                <span class="badge-success">Selesai / Terverifikasi</span>
+            </div>
+        </header>
 
-            <main class="dashboard-body">
-
-                <section class="section-box">
-                    <h3 class="section-title"><span class="icon">📖</span> PROGRES KITAB</h3>
-                    <div id="progres-kitab-container" class="section-content">
-                        </div>
-                </section>
-
-                <section class="section-box">
-                    <h3 class="section-title"><span class="icon">📝</span> NILAI TAMRIN</h3>
-                    <div class="section-content">
-                        <div class="sub-tamrin-title">TAMRIN NAHWU</div>
-                        <div class="grid-tamrin" id="tamrin-nahwu-row">
-                            </div>
-
-                        <div class="sub-tamrin-title" style="margin-top: 15px;">TAMRIN FIQH</div>
-                        <div class="grid-tamrin" id="tamrin-fiqh-row">
-                            </div>
-                    </div>
-                </section>
-
-                <section class="section-box">
-                    <h3 class="section-title"><span class="icon">📆</span> PERKEMBANGAN SETORAN SETIAP SATU PEKAN</h3>
-                    <div class="grid-pekanan" id="setoran-pekanan-row">
-                        </div>
-                </section>
-
-                <section class="section-box">
-                    <h3 class="section-title"><span class="icon">💵</span> INFO SYAHRIYAH (11 BULAN)</h3>
-                    <div class="grid-syahriyah" id="syahriyah-row">
-                        </div>
-                </section>
-
-            </main>
-        </div>
-
-    </div>
-
-    <a href="https://wa.me/628XXXXXXXXXX" class="floating-wa" target="_blank" id="wa-button" style="display: none;">
-        <svg viewBox="0 0 32 32" class="wa-svg"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.733 5.48 2.01 7.79l-2.01 7.336 7.514-1.972c2.247 1.217 4.815 1.916 7.549 1.916 8.837 0 16-7.163 16-16s-7.163-16-16-16zm8.93 21.722c-.37 1.042-1.812 1.905-2.5 1.975-.625.064-1.41.096-2.28-.192-.544-.179-1.226-.41-2.074-.775-3.606-1.55-5.932-5.234-6.113-5.474-.175-.24-1.458-1.944-1.458-3.71 0-1.765.922-2.632 1.252-2.984.323-.353.71-.442.946-.442.237 0 .474.003.68.013.214.01.502-.083.784.6.292.71 1.002 2.453 1.09 2.632.088.18.146.39.026.632-.117.242-.178.393-.353.6-.175.204-.37.457-.526.613-.175.176-.357.367-.152.716.204.347.91 1.503 1.95 2.43 1.336 1.19 2.464 1.56 2.81 1.72.347.162.55.136.756-.1.204-.24.876-1.02 1.11-1.37.234-.35.468-.292.784-.176.315.117 2.01 1.026 2.41 1.226.402.2.67.298.766.467.098.168.098.974-.272 2.017z" fill="#fff"/></svg>
-    </a>
-
-    <div id="loading-overlay" class="overlay" style="display: none;">
-        <div class="spinner"></div>
-        <p>Memvalidasi NIS Santri...</p>
-    </div>
-
-    <script>
-        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI
-        const webAppUrl = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
-
-        async function prosesLogin() {
-            const nisInput = document.getElementById('nis-input').value.trim();
-            const errorDiv = document.getElementById('login-error');
-            const loading = document.getElementById('loading-overlay');
-
-            if (!nisInput) {
-                errorDiv.innerText = "NIS tidak boleh kosong!";
-                return;
-            }
-
-            errorDiv.innerText = "";
-            loading.style.display = "flex";
-
-            try {
-                const response = await fetch(webAppUrl);
-                const data = await response.json();
+        <!-- PROGRES UTAMA MELINGKAR (JURUMIYAH & TASRIF) -->
+        <section class="section-card">
+            <h2 class="section-title"><i class="fa-solid fa-chart-line text-gold"></i> Progres Hafalan Kitab</h2>
+            <div class="progress-circle-container">
                 
-                // Pencarian berdasarkan NIS (Kolom di Excel Anda harus bernama "NIS")
-                const santri = data.find(item => item.NIS == nisInput || item.nis == nisInput);
+                <!-- Lingkaran Jurumiyah -->
+                <div class="progress-box">
+                    <div class="circle-wrapper">
+                        <!-- Progress dihitung dengan stroke-dashoffset. Max 27 hal. Contoh terhafal: 18 hal. (220 - (18/27 * 220)) = 73.3 -->
+                        <svg class="circle-svg" viewBox="0 0 80 80">
+                            <circle class="bg" cx="40" cy="40" r="35"></circle>
+                            <circle class="progress jurumiyah" cx="40" cy="40" r="35" style="stroke-dashoffset: 73.3;"></circle>
+                        </svg>
+                        <div class="circle-number">18<span class="circle-unit">/27 hal</span></div>
+                    </div>
+                    <span class="circle-label">Imriti / Jurumiyah</span>
+                </div>
 
-                if (santri) {
-                    document.getElementById('login-page').style.display = 'none';
-                    document.getElementById('dashboard-page').style.display = 'block';
-                    document.getElementById('wa-button').style.display = 'flex';
-                    
-                    // Pemetaan Data Header
-                    document.getElementById('nama-santri').innerText = santri['Nama'] || santri['NAMA'] || 'Nama Santri';
-                    document.getElementById('alamat-santri').innerText = santri['Alamat'] || santri['ALAMAT'] || 'ALAMAT BELUM DIISI';
+                <!-- Lingkaran Tasrif -->
+                <div class="progress-box">
+                    <div class="circle-wrapper">
+                        <!-- Max 45 hal. Contoh terhafal: 30 hal. (220 - (30/45 * 220)) = 73.3 -->
+                        <svg class="circle-svg" viewBox="0 0 80 80">
+                            <circle class="bg" cx="40" cy="40" r="35"></circle>
+                            <circle class="progress tasrif" cx="40" cy="40" r="35" style="stroke-dashoffset: 73.3;"></circle>
+                        </svg>
+                        <div class="circle-number">30<span class="circle-unit">/45 hal</span></div>
+                    </div>
+                    <span class="circle-label">Nadzom Tasrif</span>
+                </div>
 
-                    // ================= 1. RENDER PROGRES KITAB =================
-                    // Contoh jika kolom di Excel bernama: Progres Jurumiyah, Progres Tasrif
-                    const kitabContainer = document.getElementById('progres-kitab-container');
-                    kitabContainer.innerHTML = `
-                        <div class="kitab-row">
-                            <div class="kitab-info"><span>JURUMIYAH (27 HAL)</span> <span>${santri['Progres Jurumiyah'] || '0'}%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: ${santri['Progres Jurumiyah'] || 0}%"></div></div>
-                        </div>
-                        <div class="kitab-row" style="margin-top: 12px;">
-                            <div class="kitab-info"><span>TASRIF (45 HAL)</span> <span>${santri['Progres Tasrif'] || '0'}%</span></div>
-                            <div class="progress-bar"><div class="progress-fill" style="width: ${santri['Progres Tasrif'] || 0}%"></div></div>
-                        </div>
-                    `;
+            </div>
+        </section>
 
-                    // ================= 2. RENDER NILAI TAMRIN =================
-                    // Kolom Excel disesuaikan: Tamrin Nahwu Dzulaqdah, Tamrin Nahwu Dzulhijjah, dll.
-                    const nahwuRow = document.getElementById('tamrin-nahwu-row');
-                    nahwuRow.innerHTML = `
-                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value">${santri['Tamrin Nahwu Dzulaqdah'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['Tamrin Nahwu Dzulhijjah'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Muharram</span><span class="m-value">${santri['Tamrin Nahwu Muharram'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Safar</span><span class="m-value">${santri['Tamrin Nahwu Safar'] || '-'}</span></div>
-                        <div class="card-mini gold-border"><span class="m-title">rata-rata</span><span class="m-value">${santri['Rata Tamrin Nahwu'] || '-'}</span></div>
-                    `;
+        <!-- PERKEMBANGAN SETORAN BULANAN (4 PEKAN) -->
+        <section class="section-card">
+            <h2 class="section-title"><i class="fa-solid fa-calendar-check text-gold"></i> Setoran Bulan Ini <span class="title-sub">(4 Pekan)</span></h2>
+            <div class="setoran-grid">
+                <div class="setoran-item status-done">
+                    <span class="pekan-title">Pekan 1</span>
+                    <div class="status-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <span class="pekan-desc">Lancar</span>
+                </div>
+                <div class="setoran-item status-done">
+                    <span class="pekan-title">Pekan 2</span>
+                    <div class="status-icon"><i class="fa-solid fa-circle-check"></i></div>
+                    <span class="pekan-desc">Lancar</span>
+                </div>
+                <div class="setoran-item status-pending">
+                    <span class="pekan-title">Pekan 3</span>
+                    <div class="status-icon"><i class="fa-solid fa-clock"></i></div>
+                    <span class="pekan-desc">Belum</span>
+                </div>
+                <div class="setoran-item status-pending">
+                    <span class="pekan-title">Pekan 4</span>
+                    <div class="status-icon"><i class="fa-solid fa-clock"></i></div>
+                    <span class="pekan-desc">Belum</span>
+                </div>
+            </div>
+        </section>
 
-                    const fiqhRow = document.getElementById('tamrin-fiqh-row');
-                    fiqhRow.innerHTML = `
-                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value">${santri['Tamrin Fiqh Dzulaqdah'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['Tamrin Fiqh Dzulhijjah'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Muharram</span><span class="m-value">${santri['Tamrin Fiqh Muharram'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Safar</span><span class="m-value">${santri['Tamrin Fiqh Safar'] || '-'}</span></div>
-                        <div class="card-mini gold-border"><span class="m-title">rata-rata</span><span class="m-value">${santri['Rata Tamrin Fiqh'] || '-'}</span></div>
-                    `;
+        <!-- NILAI TAMRIN NAHWU & FIQH -->
+        <section class="section-card">
+            <h2 class="section-title"><i class="fa-solid fa-graduation-cap text-gold"></i> Nilai Hasil Tamrin</h2>
+            
+            <div class="tamrin-container">
+                <!-- Tamrin Nahwu -->
+                <div class="tamrin-group">
+                    <h3><span class="indicator nahwu"></span> Tamrin Nahwu</h3>
+                    <div class="tamrin-badge-row">
+                        <div class="score-badge">T1: <span>85</span></div>
+                        <div class="score-badge">T2: <span>90</span></div>
+                        <div class="score-badge">T3: <span>78</span></div>
+                        <div class="score-badge">T4: <span>92</span></div>
+                        <div class="score-badge">T5: <span>88</span></div>
+                    </div>
+                </div>
 
-                    // ================= 3. RENDER PERKEMBANGAN SETORAN =================
-                    // Kolom Excel: Setoran Pekan 1, Setoran Pekan 2, dst.
-                    const setoranRow = document.getElementById('setoran-pekanan-row');
-                    setoranRow.innerHTML = `
-                        <div class="card-pekan"><span class="p-title">PEKAN 1</span><span class="p-value">${santri['Setoran Pekan 1'] || '-'}</span></div>
-                        <div class="card-pekan"><span class="p-title">PEKAN 2</span><span class="p-value">${santri['Setoran Pekan 2'] || '-'}</span></div>
-                        <div class="card-pekan"><span class="p-title">PEKAN 3</span><span class="p-value">${santri['Setoran Pekan 3'] || '-'}</span></div>
-                        <div class="card-pekan"><span class="p-title">PEKAN 4</span><span class="p-value">${santri['Setoran Pekan 4'] || '-'}</span></div>
-                    `;
+                <!-- Tamrin Fiqh -->
+                <div class="tamrin-group">
+                    <h3><span class="indicator fiqh"></span> Tamrin Fiqh</h3>
+                    <div class="tamrin-badge-row">
+                        <div class="score-badge">TF1: <span>80</span></div>
+                        <div class="score-badge">TF2: <span>85</span></div>
+                        <div class="score-badge">TF3: <span>83</span></div>
+                        <div class="score-badge">TF4: <span>75</span></div>
+                        <div class="score-badge">TF5: <span>90</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    // ================= 4. RENDER INFO SYAHRIYAH =================
-                    // Kolom Excel: Syahriyah Syawal, Syahriyah Dzulaqdah, Syahriyah Dzulhijjah
-                    const syahriyahRow = document.getElementById('syahriyah-row');
-                    syahriyahRow.innerHTML = `
-                        <div class="card-mini"><span class="m-title">Syawal</span><span class="m-value font-bold">${santri['Syahriyah Syawal'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value font-bold">${santri['Syahriyah Dzulaqdah'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value font-bold">${santri['Syahriyah Dzulhijjah'] || '-'}</span></div>
-                    `;
+        <!-- BIAYA SAHRIYAH (11 BULAN: SYAWAL - SYA'BAN) -->
+        <section class="section-card">
+            <h2 class="section-title"><i class="fa-solid fa-wallet text-gold"></i> Laporan Sahriyah <span class="title-sub">(11 Bulan)</span></h2>
+            <div class="sahriyah-list">
+                <!-- Lunas -->
+                <div class="sahriyah-row paid">
+                    <span class="month-name">1. Syawal</span>
+                    <span class="pay-status"><i class="fa-solid fa-circle-check"></i> Lunas</span>
+                </div>
+                <div class="sahriyah-row paid">
+                    <span class="month-name">2. Dzulqo'dah</span>
+                    <span class="pay-status"><i class="fa-solid fa-circle-check"></i> Lunas</span>
+                </div>
+                <div class="sahriyah-row paid">
+                    <span class="month-name">3. Dzulhijjah</span>
+                    <span class="pay-status"><i class="fa-solid fa-circle-check"></i> Lunas</span>
+                </div>
+                <!-- Belum Bayar -->
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">4. Muharram</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">5. Safar</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">6. Rabi'ul Awal</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">7. Rabi'ul Akhir</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">8. Jumadil Awal</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">9. Jumadil Akhir</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">10. Rajab</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+                <div class="sahriyah-row unpaid">
+                    <span class="month-name">11. Sya'ban</span>
+                    <span class="pay-status">Belum Bayar</span>
+                </div>
+            </div>
+        </section>
 
-                } else {
-                    errorDiv.innerText = "NIS tidak ditemukan! Periksa kembali nomor NIS buah hati Anda.";
-                }
-            } catch (error) {
-                console.error(error);
-                errorDiv.innerText = "Gagal memuat data, periksa koneksi internet.";
-            } finally {
-                loading.style.display = "none";
-            }
-        }
+        <!-- FOOTER: SHOLAWAT FATIH -->
+        <footer class="sholawat-section">
+            <div class="sholawat-box">
+                <h3 class="sholawat-title">Sholawat Fatih</h3>
+                <p class="arabic">اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، الْفَاتِحِ لِمَا أُغْلِقَ، وَالْخَاتِمِ لِمَا سَبَقَ، نَاصِرِ الْحَقِّ بِالْحَقِّ، وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ، وَعَلَى آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</p>
+                <p class="translation">"Ya Allah, limpahkanlah rahmat kepada junjungan kami Nabi Muhammad, pembuka apa yang terkunci, penutup apa yang telah lalu, pembela kebenaran dengan kebenaran, dan penunjuk ke jalan-Mu yang lurus. Dan kepada keluarganya, sebenar-benar pengangkatan kedudukannya yang agung."</p>
+            </div>
+        </footer>
 
-        function logout() {
-            document.getElementById('nis-input').value = '';
-            document.getElementById('dashboard-page').style.display = 'none';
-            document.getElementById('wa-button').style.display = 'none';
-            document.getElementById('login-page').style.display = 'flex';
-        }
-    </script>
+    </div>
+
 </body>
 </html>
