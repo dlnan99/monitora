@@ -3,184 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>monitoring tampilan premium joss</title>
+    <title>Monitor Santri Attauhidiyyah - Premium</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div id="loginscreen" class="authcontainer">
-        <div class="authbox">
-            <div class="authlogo">
-                <i class="fa-solid fa-mosque textgold"></i>
-            </div>
-            <h2>e-monitoring santri</h2>
-            <p>masukkan nomor induk santri untuk melihat perkembangan akademik & hafalan.</p>
-            
-            <form id="loginform" onsubmit="handlelogin(event)">
-                <div class="inputgroup">
-                    <i class="fa-solid fa-id-card inputicon"></i>
-                    <input type="number" id="nis" placeholder="masukkan nis santri" required inputmode="numeric">
+    <div class="app-container">
+        
+        <div id="login-page" class="page-wrapper login-bg">
+            <div class="login-card">
+                <div class="login-logo">🕌</div>
+                <h2>Portal Wali Santri</h2>
+                <p>MDS Kelas 3 Ibtida B - Attauhidiyyah</p>
+                
+                <div class="form-group">
+                    <label>Nomor Induk Santri (NIS)</label>
+                    <input type="number" id="nis-input" placeholder="Masukkan nomor NIS..." inputmode="numeric">
                 </div>
-                <button type="submit" class="btnlogin">
-                    <span>masuk dashboard</span> <i class="fa-solid fa-arrow-right"></i>
-                </button>
-                <p id="errormessage" class="errortext"></p>
-            </form>
+                <button id="btn-login" onclick="prosesLogin()">Masuk Dashboard</button>
+                <div id="login-error" class="error-text"></div>
+            </div>
         </div>
+
+        <div id="dashboard-page" class="page-wrapper" style="display: none;">
+            
+            <header class="main-header">
+                <div class="header-top">
+                    <div class="badge-status">Premium Monitor</div>
+                    <button class="btn-logout" onclick="logout()">Keluar</button>
+                </div>
+                <h1 id="nama-santri" class="nama-text">Nama Santri</h1>
+                <p id="alamat-santri" class="alamat-text">Alamat Santri</p>
+            </header>
+
+            <main class="dashboard-body">
+
+                <section class="section-box no-border">
+                    <h3 class="section-title"><span class="icon">🏆</span> PROGRES HAFALAN</h3>
+                    <div class="circular-progress-container">
+                        <div class="circle-wrapper">
+                            <div class="progress-circular" id="circle-jurumiyah" style="--p:0; --c:#00a884;">
+                                <span id="text-jurumiyah-percent" class="circle-percent">0%</span>
+                            </div>
+                            <span class="circle-label">JURUMIYAH</span>
+                            <span id="text-jurumiyah-page" class="circle-sub-label">0 / 27 Hal</span>
+                        </div>
+                        
+                        <div class="circle-wrapper">
+                            <div class="progress-circular" id="circle-tasrif" style="--p:0; --c:#c59b27;">
+                                <span id="text-tasrif-percent" class="circle-percent">0%</span>
+                            </div>
+                            <span class="circle-label">TASRIF</span>
+                            <span id="text-tasrif-page" class="circle-sub-label">0 / 45 Hal</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">📆</span> PERKEMBANGAN SETORAN (1 BULAN 4 PEKAN)</h3>
+                    <div class="grid-pekanan" id="setoran-row">
+                        </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">📝</span> NILAI TAMRIN</h3>
+                    <div class="section-content">
+                        <div class="sub-tamrin-title">TAMRIN NAHWU</div>
+                        <div class="grid-tamrin" id="tamrin-nahwu-row"></div>
+
+                        <div class="sub-tamrin-title" style="margin-top: 15px;">TAMRIN FIQH</div>
+                        <div class="grid-tamrin" id="tamrin-fiqh-row"></div>
+                    </div>
+                </section>
+
+                <section class="section-box grid-dua-kolom">
+                    <div class="status-box-premium">
+                        <span class="status-label">STATUS PENDAFTARAN</span>
+                        <span id="status-pendaftaran" class="status-value">-</span>
+                    </div>
+                    <div class="status-box-premium text-right">
+                        <span class="status-label">STATUS SANTRI SEMESTER 1</span>
+                        <span id="status-santri-sem1" class="status-value-sub">-</span>
+                    </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">💵</span> BIAYA SYAHRIYAH (SYAWAL - SYA'BAN)</h3>
+                    <div class="grid-syahriyah" id="syahriyah-row">
+                        </div>
+                </section>
+
+                <section class="sholawat-section">
+                    <div class="sholawat-header">✨ SHOLAWAT FATIH ✨</div>
+                    <p class="sholawat-arabic">
+                        اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، الْفَاتِحِ لِمَا أُغْلِقَ، وَالْخَاتِمِ لِمَا سَبَقَ، نَاصِرِ الْحَقِّ بِالْحَقِّ Bound، وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ، وَعَلَى آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ.
+                    </p>
+                    <div class="sholawat-footer">Keluarga Besar Kelas 3 Ibtida B</div>
+                </section>
+
+            </main>
+        </div>
+
     </div>
 
-
-    <div id="dashboardscreen" class="appcontainer hidden">
-        
-        <header class="mainheader">
-            <div class="headerbadge">status: <span class="statusaktif">semester 1</span></div>
-            
-            <h1 class="nama">muhammad al-fatih</h1>
-            
-            <p class="alamat"><i class="fa-solid fa-location-dot"></i> jl. pesantren no. 45, demak, jawa tengah</p>
-            
-            <div class="meta-info">
-                <span><i class="fa-solid fa-id-card"></i> nis: <span id="display-nis">232403001</span></span>
-                <span class="statuspendaftaran">terverifikasi</span>
-            </div>
-            
-            <button class="btnlogout" onclick="handlelogout()"><i class="fa-solid fa-sign-out-alt"></i> keluar</button>
-        </header>
-
-        <section class="sectioncard">
-            <h2 class="sectiontitle"><i class="fa-solid fa-chart-line textgold"></i> progres hafalan kitab</h2>
-            <div class="progresscirclecontainer">
-                
-                <div class="progressbox" id="hafalanjurumiyah">
-                    <div class="circlewrapper">
-                        <svg class="circlesvg" viewBox="0 0 80 80">
-                            <circle class="bg" cx="40" cy="40" r="35"></circle>
-                            <circle class="progress jurumiyah" cx="40" cy="40" r="35" style="stroke-dashoffset: 73.3;"></circle>
-                        </svg>
-                        <div class="circlenumber">18<span class="circleunit">/27 hal</span></div>
-                    </div>
-                    <span class="circlelabel">hafalan jurumiyah</span>
-                </div>
-
-                <div class="progressbox" id="hafalantasrif">
-                    <div class="circlewrapper">
-                        <svg class="circlesvg" viewBox="0 0 80 80">
-                            <circle class="bg" cx="40" cy="40" r="35"></circle>
-                            <circle class="progress tasrif" cx="40" cy="40" r="35" style="stroke-dashoffset: 73.3;"></circle>
-                        </svg>
-                        <div class="circlenumber">30<span class="circleunit">/45 hal</span></div>
-                    </div>
-                    <span class="circlelabel">hafalan tasrif</span>
-                </div>
-
-            </div>
-        </section>
-
-        <section class="sectioncard">
-            <h2 class="sectiontitle"><i class="fa-solid fa-calendar-check textgold"></i> perkembangan setoran <span class="titlesub">(bulan ini)</span></h2>
-            <div class="setorangrid">
-                <div class="setoranitem statusdone" id="setoran1">
-                    <span class="pekantitle">setoran 1</span>
-                    <div class="statusicon"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="pekandesc">pekan 1</span>
-                </div>
-                <div class="setoranitem statusdone" id="setoran2">
-                    <span class="pekantitle">setoran 2</span>
-                    <div class="statusicon"><i class="fa-solid fa-circle-check"></i></div>
-                    <span class="pekandesc">pekan 2</span>
-                </div>
-                <div class="setoranitem statuspending" id="setoran3">
-                    <span class="pekantitle">setoran 3</span>
-                    <div class="statusicon"><i class="fa-solid fa-clock"></i></div>
-                    <span class="pekandesc">pekan 3</span>
-                </div>
-                <div class="setoranitem statuspending" id="setoran4">
-                    <span class="pekantitle">setoran 4</span>
-                    <div class="statusicon"><i class="fa-solid fa-clock"></i></div>
-                    <span class="pekandesc">pekan 4</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="sectioncard">
-            <h2 class="sectiontitle"><i class="fa-solid fa-graduation-cap textgold"></i> nilai tamrin nahwu dan fiqh</h2>
-            
-            <div class="tamrincontainer">
-                <div class="tamringroup">
-                    <h3><span class="indicator nahwu"></span> tamrin nahwu</h3>
-                    <div class="tamrinbadgerow">
-                        <div class="scorebadge" id="tamrin1">t1: <span>85</span></div>
-                        <div class="scorebadge" id="tamrin2">t2: <span>90</span></div>
-                        <div class="scorebadge" id="tamrin3">t3: <span>78</span></div>
-                        <div class="scorebadge" id="tamrin4">t4: <span>92</span></div>
-                        <div class="scorebadge" id="tamrin5">t5: <span>88</span></div>
-                    </div>
-                </div>
-
-                <div class="tamringroup">
-                    <h3><span class="indicator fiqh"></span> tamrin fiqh</h3>
-                    <div class="tamrinbadgerow">
-                        <div class="scorebadge" id="tamrinfiqh1">tf1: <span>80</span></div>
-                        <div class="scorebadge" id="tamrinfiqh2">tf2: <span>85</span></div>
-                        <div class="scorebadge" id="tamrinfiqh3">tf3: <span>83</span></div>
-                        <div class="scorebadge" id="tamrinfiqh4">tf4: <span>75</span></div>
-                        <div class="scorebadge" id="tamrinfiqh5">tf5: <span>90</span></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="sectioncard">
-            <h2 class="sectiontitle"><i class="fa-solid fa-wallet textgold"></i> biaya sahriyah 11 bulan <span class="titlesub">(syawal - sya'ban)</span></h2>
-            <div class="sahriyahlist" id="sahriyah11bulanmulaisyawal">
-                <div class="sahriyahrow paid"><span class="monthname">1. syawal</span><span class="paystatus"><i class="fa-solid fa-circle-check"></i> lunas</span></div>
-                <div class="sahriyahrow paid"><span class="monthname">2. dzulqo'dah</span><span class="paystatus"><i class="fa-solid fa-circle-check"></i> lunas</span></div>
-                <div class="sahriyahrow paid"><span class="monthname">3. dzulhijjah</span><span class="paystatus"><i class="fa-solid fa-circle-check"></i> lunas</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">4. muharram</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">5. safar</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">6. rabi'ul awal</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">7. rabi'ul akhir</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">8. jumadil awal</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">9. jumadil akhir</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">10. rajab</span><span class="paystatus">belum bayar</span></div>
-                <div class="sahriyahrow unpaid"><span class="monthname">11. sya'ban</span><span class="paystatus">belum bayar</span></div>
-            </div>
-        </section>
-
-        <footer class="sholawatsection">
-            <div class="sholawatbox">
-                <h3 class="sholawattitle">sholawat fatih</h3>
-                <p class="arabic">اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، الْفَاتِحِ لِمَا أُغْلِقَ، وَالْخَاتِمِ لِمَا Sَبَقَ، نَاصِرِ الْحَقِّ بِالْحَقِّ، وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ، وَعَلَى آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ</p>
-                <p class="translation">"ya allah, limpahkanlah rahmat kepada junjungan kami nabi muhammad, pembuka apa yang terkunci, penutup apa yang telah lalu, pembela kebenaran dengan kebenaran, dan penunjuk ke jalan-mu yang lurus. dan kepada keluarganya, sebenar-benar pengangkatan kedudukannya yang agung."</p>
-            </div>
-        </footer>
-
+    <div id="loading-overlay" class="overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Mengambil data premium...</p>
     </div>
 
     <script>
-        function handlelogin(event) {
-            event.preventDefault();
-            const nisinput = document.getElementById('nis').value;
-            const errormsg = document.getElementById('errormessage');
+        // MASUKKAN URL GOOGLE APPS SCRIPT SPREADSHEET ANDA DI SINI
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
 
-            if (nisinput.length >= 3) {
-                errormsg.innerText = "";
-                document.getElementById('display-nis').innerText = nisinput;
+        async function prosesLogin() {
+            const nisInput = document.getElementById('nis-input').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            const loading = document.getElementById('loading-overlay');
+
+            if (!nisInput) {
+                errorDiv.innerText = "Masukkan nomor NIS Anda!";
+                return;
+            }
+
+            errorDiv.innerText = "";
+            loading.style.display = "flex";
+
+            try {
+                const response = await fetch(webAppUrl);
+                const data = await response.json();
                 
-                document.getElementById('loginscreen').classList.add('hidden');
-                document.getElementById('dashboardscreen').classList.remove('hidden');
-                window.scrollTo(0, 0);
-            } else {
-                errormsg.innerText = "nis tidak ditemukan. periksa kembali!";
+                // Pencarian Menggunakan Key Huruf Kecil 'nis'
+                const santri = data.find(item => item.nis == nisInput);
+
+                if (santri) {
+                    document.getElementById('login-page').style.display = 'none';
+                    document.getElementById('dashboard-page').style.display = 'block';
+                    
+                    // 1. Data Utama (Huruf Kecil Kolom)
+                    document.getElementById('nama-santri').innerText = santri['nama'] || '-';
+                    document.getElementById('alamat-santri').innerText = santri['alamat'] || '-';
+
+                    // 2. Kalkulasi Progres Melingkar (Jurumiyah Max 27 Hal, Tasrif Max 45 Hal)
+                    const halJuru = parseFloat(santri['hafalan jurumiyah']) || 0;
+                    const percentJuru = Math.min(Math.round((halJuru / 27) * 100), 100);
+                    document.getElementById('circle-jurumiyah').style.setProperty('--p', percentJuru);
+                    document.getElementById('text-jurumiyah-percent').innerText = percentJuru + "%";
+                    document.getElementById('text-jurumiyah-page').innerText = halJuru + " / 27 Hal";
+
+                    const halTasrif = parseFloat(santri['hafalan tasrif']) || 0;
+                    const percentTasrif = Math.min(Math.round((halTasrif / 45) * 100), 100);
+                    document.getElementById('circle-tasrif').style.setProperty('--p', percentTasrif);
+                    document.getElementById('text-tasrif-percent').innerText = percentTasrif + "%";
+                    document.getElementById('text-tasrif-page').innerText = halTasrif + " / 45 Hal";
+
+                    // 3. Render Perkembangan Setoran 4 Pekan
+                    const setoranRow = document.getElementById('setoran-row');
+                    setoranRow.innerHTML = `
+                        <div class="card-pekan"><span class="p-title">PEKAN 1</span><span class="p-value">${santri['setoran 1'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 2</span><span class="p-value">${santri['setoran 2'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 3</span><span class="p-value">${santri['setoran 3'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 4</span><span class="p-value">${santri['setoran 4'] || '-'}</span></div>
+                    `;
+
+                    // 4. Render Nilai Tamrin Nahwu & Fiqh (Membaca kolom huruf kecil)
+                    const nahwuRow = document.getElementById('tamrin-nahwu-row');
+                    let n1 = parseFloat(santri['tamrin 1']) || 0, n2 = parseFloat(santri['tamrin 2']) || 0, n3 = parseFloat(santri['tamrin 3']) || 0, n4 = parseFloat(santri['tamrin 4']) || 0, n5 = parseFloat(santri['tamrin 5']) || 0;
+                    let avgNahwu = Math.round((n1+n2+n3+n4+n5)/5) || '-';
+                    nahwuRow.innerHTML = `
+                        <div class="card-mini"><span class="m-title">T1</span><span class="m-value">${santri['tamrin 1'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">T2</span><span class="m-value">${santri['tamrin 2'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">T3</span><span class="m-value">${santri['tamrin 3'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">T4</span><span class="m-value">${santri['tamrin 4'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">T5</span><span class="m-value">${santri['tamrin 5'] || '-'}</span></div>
+                        <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgNahwu}</span></div>
+                    `;
+
+                    const fiqhRow = document.getElementById('tamrin-fiqh-row');
+                    let f1 = parseFloat(santri['tamrin fiqh 1']) || 0, f2 = parseFloat(santri['tamrin fiqh 2']) || 0, f3 = parseFloat(santri['tamrin fiqh 3']) || 0, f4 = parseFloat(santri['tamrin fiqh 4']) || 0, f5 = parseFloat(santri['tamrin fiqh 5']) || 0;
+                    let avgFiqh = Math.round((f1+f2+f3+f4+f5)/5) || '-';
+                    fiqhRow.innerHTML = `
+                        <div class="card-mini"><span class="m-title">F1</span><span class="m-value">${santri['tamrin fiqh 1'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">F2</span><span class="m-value">${santri['tamrin fiqh 2'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">F3</span><span class="m-value">${santri['tamrin fiqh 3'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">F4</span><span class="m-value">${santri['tamrin fiqh 4'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">F5</span><span class="m-value">${santri['tamrin fiqh 5'] || '-'}</span></div>
+                        <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgFiqh}</span></div>
+                    `;
+
+                    // 5. Render Status Pendaftaran & Status Santri Semester 1
+                    document.getElementById('status-pendaftaran').innerText = santri['status pendaftaran'] || '-';
+                    document.getElementById('status-santri-sem1').innerText = santri['status santri semester 1'] || '-';
+
+                    // 6. Render Syahriyah 11 Bulan (Syawal s/d Sya'ban)
+                    const syahriyahRow = document.getElementById('syahriyah-row');
+                    const bulanSyahriyah = ['syawal', "dzulqa'dah", 'dzulhijjah', 'muharram', 'safar', "rabi'ul awal", "rabi'ul akhir", 'jumadil awal', 'jumadil akhir', 'rajab', "sya'ban"];
+                    syahriyahRow.innerHTML = '';
+                    bulanSyahriyah.forEach(bln => {
+                        syahriyahRow.innerHTML += `
+                            <div class="card-mini">
+                                <span class="m-title" style="font-size:9px;">${bln.toUpperCase()}</span>
+                                <span class="m-value font-emerald">${santri[bln] || '-'}</span>
+                            </div>
+                        `;
+                    });
+
+                } else {
+                    errorDiv.innerText = "Nomor NIS tidak terdaftar!";
+                }
+            } catch (error) {
+                console.error(error);
+                errorDiv.innerText = "Koneksi terganggu. Silakan coba lagi.";
+            } finally {
+                loading.style.display = "none";
             }
         }
 
-        function handlelogout() {
-            document.getElementById('dashboardscreen').classList.add('hidden');
-            document.getElementById('loginscreen').classList.remove('hidden');
-            document.getElementById('nis').value = "";
+        function logout() {
+            document.getElementById('nis-input').value = '';
+            document.getElementById('dashboard-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'flex';
         }
     </script>
 </body>
