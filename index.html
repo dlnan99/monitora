@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Wali Santri Premium</title>
+    <!-- Menggunakan framework CSS Tailwind via CDN agar tampilan premium & sangat ringan -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 font-sans antialiased text-gray-800">
+
+    <!-- Header / Navbar Premium -->
+    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold tracking-wide">ATTAUHIDIYYAH</h1>
+                <p class="text-xs text-emerald-100 font-medium">Monitoring Santri - Kelas 3 Ibtida B</p>
+            </div>
+            <!-- Indikator Status Online -->
+            <span class="flex h-3 h-3 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+            </span>
+        </div>
+    </header>
+
+    <!-- Konten Utama (Didesain Pas untuk Ukuran Layar HP) -->
+    <main class="max-w-md mx-auto px-4 py-6 min-h-screen">
+        
+        <!-- Kotak Pencarian / Filter Nama -->
+        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-6">
+            <label for="search" class="block text-sm font-semibold text-gray-600 mb-2">Cari Data Santri</label>
+            <div class="relative">
+                <input type="text" id="search" placeholder="Ketik nama santri..." 
+                       class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all text-sm">
+                <span class="absolute left-3 top-3.5 text-gray-400">🔍</span>
+            </div>
+        </div>
+
+        <!-- Loading Animation -->
+        <div id="loading" class="flex flex-col items-center justify-center py-12">
+            <div class="animate-spin rounded-full h-10 w-10 border-4 border-emerald-500 border-t-transparent"></div>
+            <p class="text-gray-500 text-sm mt-3 font-medium">Memuat data dari pusat...</p>
+        </div>
+
+        <!-- Container untuk List Kartu Data Santri -->
+        <div id="santri-container" class="space-y-4 hidden">
+            <!-- Data akan otomatis muncul di sini via JavaScript -->
+        </div>
+
+    </main>
+
+    <!-- Footer Premium Ringan -->
+    <footer class="bg-white border-t border-gray-100 py-6 mt-12 text-center text-xs text-gray-400">
+        <p>&copy; 2026 Admin Attauhidiyyah. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT: Menghubungkan ke Google Sheets -->
+    <script>
+        // PENTING: Ganti teks di bawah ini dengan URL Web App Google Script Anda yang panjang tadi!
+        const API_URL = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
+
+        const loadingEl = document.getElementById('loading');
+        const containerEl = document.getElementById('santri-container');
+        const searchInput = document.getElementById('search');
+        let dataSantri = [];
+
+        // Fungsi mengambil data dari Google Sheets via API
+        async function ambilData() {
+            try {
+                const response = await fetch(API_URL);
+                dataSantri = await response.json();
+                
+                loadingEl.classList.add('hidden');
+                containerEl.classList.remove('hidden');
+                
+                tampilkanData(dataSantri);
+            } catch (error) {
+                console.error("Gagal memuat data:", error);
+                loadingEl.innerHTML = `<p class="text-red-500 text-sm font-semibold">Gagal memuat data. Periksa kembali konfigurasi API Anda.</p>`;
+            }
+        }
+
+        // Fungsi menyusun data Spreadsheet ke dalam bentuk kartu-kartu premium di HP
+        function tampilkanData(data) {
+            containerEl.innerHTML = '';
+            
+            if (data.length === 0) {
+                containerEl.innerHTML = `<div class="text-center py-8 text-gray-400 text-sm">Data tidak ditemukan</div>`;
+                return;
+            }
+
+            data.forEach(santri => {
+                // Membuat kartu data otomatis berdasarkan kolom di spreadsheet Anda
+                // Kita buat dinamis agar mencetak semua data kolom yang ada
+                let detailDataHTML = '';
+                
+                // Meloop isi kolom (melewatkan nama kolom pertama yang biasanya 'Nama')
+                for (const [kunci, nilai] of Object.entries(santri)) {
+                    if (kunci.toLowerCase() !== 'nama' && nilai !== '') {
+                        detailDataHTML += `
+                            <div class="flex justify-between border-b border-gray-50 py-2 text-sm">
+                                <span class="text-gray-400 capitalize">${kunci}</span>
+                                <span class="font-semibold text-gray-700">${nilai}</span>
+                            </div>
+                        `;
+                    }
+                }
+
+                const kartuHTML = `
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
+                        <div class="bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-3 border-b border-gray-100">
+                            <h3 class="font-bold text-emerald-800 text-base uppercase tracking-wide">${santri.Nama || santri.nama || 'Tanpa Nama'}</h3>
+                        </div>
+                        <div class="p-4 space-y-1">
+                            ${detailDataHTML}
+                        </div>
+                    </div>
+                `;
+                containerEl.insertAdjacentHTML('beforeend', kartuHTML);
+            });
+        }
+
+        // Fitur Pencarian Real-Time (Ketik langsung menyaring)
+        searchInput.addEventListener('input', (e) => {
+            const keyword = e.target.value.toLowerCase();
+            const dataDisaring = dataSantri.filter(santri => {
+                const namaSantri = (santri.Nama || santri.nama || '').toLowerCase();
+                return namaSantri.includes(keyword);
+            });
+            tampilkanData(dataDisaring);
+        });
+
+        // Jalankan fungsi ambil data saat halaman dibuka
+        ambilData();
+    </script>
+</body>
+</html>
