@@ -1,15 +1,16 @@
-/* Desain UI Premium oleh Gemini - Dioptimalkan untuk Mobile */
+/* Premium Islamic Theme Style - Oleh Gemini */
 * {
     margin: 0;
     padding: 0;
+    box-shadow: none;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
     -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: #f8fafc;
-    color: #1e293b;
+    background-color: #f0f4f2;
+    color: #2c3e50;
     display: flex;
     justify-content: center;
     min-height: 100vh;
@@ -17,288 +18,341 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 450px;
-    background-color: #ffffff;
+    max-width: 500px; /* Lebar maksimal seukuran layar mobile premium */
+    background-color: #fdfdfd;
     min-height: 100vh;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.03);
     position: relative;
+    box-shadow: 0 10px 30px rgba(0, 77, 61, 0.05);
 }
 
 .page-wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    animation: fadeIn 0.4s ease-out;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- TAMPILAN HALAMAN LOGIN PREMIUM --- */
-.login-header {
-    padding: 60px 30px 30px 30px;
-    text-align: center;
-}
-
-.logo-area {
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    border-radius: 22px;
-    display: flex;
-    align-items: center;
+/* --- STYLE HALAMAN LOGIN --- */
+.login-bg {
+    background: linear-gradient(135deg, #004d3d 0%, #003328 100%);
     justify-content: center;
-    font-size: 30px;
-    margin: 0 auto 24px auto;
-    box-shadow: 0 10px 25px rgba(2, 132, 199, 0.25);
+    align-items: center;
+    padding: 20px;
 }
 
-.login-header h1 {
-    font-size: 26px;
+.login-card {
+    background: #ffffff;
+    width: 100%;
+    padding: 35px 25px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.login-logo {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.login-card h2 {
+    color: #004d3d;
+    font-size: 24px;
     font-weight: 800;
-    color: #0f172a;
-    letter-spacing: -0.5px;
 }
 
-.login-header p {
-    font-size: 14px;
-    color: #64748b;
-    margin-top: 10px;
-    line-height: 1.6;
-}
-
-.login-body {
-    padding: 0 30px;
-    flex: 1;
+.login-card p {
+    font-size: 13px;
+    color: #7f8c8d;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
 .form-group {
+    text-align: left;
     margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 700;
-    color: #334155;
-    margin-bottom: 8px;
-    text-transform: uppercase;
+    color: #004d3d;
+    margin-bottom: 6px;
     letter-spacing: 0.5px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 16px;
-    border-radius: 14px;
-    border: 2px solid #e2e8f0;
-    background-color: #f8fafc;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #e8edea;
+    background-color: #f9fbf0;
     font-size: 15px;
     font-weight: 600;
-    color: #0f172a;
-    transition: all 0.2s;
+    color: #004d3d;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #0284c7;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.1);
+    border-color: #c59b27;
 }
 
 #btn-login {
     width: 100%;
-    padding: 16px;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: white;
+    padding: 15px;
+    background-color: #004d3d;
+    color: #ffffff;
     border: none;
-    border-radius: 14px;
+    border-radius: 12px;
     font-size: 15px;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(15, 23, 42, 0.15);
-    transition: all 0.2s;
+    transition: background 0.2s;
 }
 
 #btn-login:active {
-    transform: scale(0.98);
+    background-color: #003328;
 }
 
 .error-text {
-    color: #ef4444;
-    font-size: 13px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 15px;
-}
-
-.login-footer {
-    padding: 30px;
-    text-align: center;
+    color: #e74c3c;
     font-size: 12px;
+    margin-top: 12px;
     font-weight: 600;
-    color: #94a3b8;
 }
 
-/* --- TAMPILAN DASHBOARD PREMIUM --- */
+/* --- MAIN DASHBOARD (HIJAU TUA & EMAS) --- */
 .main-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: white;
-    padding: 30px 24px 40px 24px;
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
-    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+    background-color: #004d3d;
+    color: #ffffff;
+    padding: 25px 20px 35px 20px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    text-align: center;
 }
 
 .header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 12px;
 }
 
-.badge-status {
-    background: rgba(14, 165, 233, 0.2);
-    color: #38bdf8;
-    padding: 6px 12px;
-    border-radius: 100px;
+.alamat-text {
     font-size: 11px;
-    font-weight: 700;
     letter-spacing: 0.5px;
-    text-transform: uppercase;
-    border: 1px solid rgba(14, 165, 233, 0.3);
+    opacity: 0.9;
+    font-weight: 600;
+    text-align: left;
+    max-width: 80%;
 }
 
 .btn-logout {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
     color: white;
     border: none;
-    padding: 6px 14px;
-    border-radius: 10px;
-    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 11px;
     font-weight: 600;
     cursor: pointer;
 }
 
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-}
-
-.avatar {
-    width: 54px;
-    height: 54px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nama-text {
     font-size: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.profile-text span {
-    font-size: 12px;
-    color: #94a3b8;
-    font-weight: 500;
-}
-
-.profile-text h2 {
-    font-size: 20px;
     font-weight: 700;
-    color: #ffffff;
-    margin-top: 2px;
+    margin-top: 10px;
+    letter-spacing: -0.5px;
 }
 
 .dashboard-body {
-    padding: 24px;
+    padding: 15px;
+}
+
+/* Kotak Section Box Berbingkai Emas Lembut */
+.section-box {
+    background: #ffffff;
+    border: 2px solid #e1e8e5;
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
 }
 
 .section-title {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 700;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 16px;
-}
-
-/* Baris List Info Premium modern (Card Rows) */
-.premium-card-row {
-    background: #ffffff;
-    border: 1px solid #f1f5f9;
-    border-radius: 16px;
-    padding: 16px;
+    color: #004d3d;
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 8px;
     margin-bottom: 12px;
     display: flex;
     align-items: center;
-    gap: 16px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.01), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    gap: 6px;
 }
 
-.card-icon {
-    width: 42px;
-    height: 42px;
-    background: #f0fdf4; /* Warna dasar lembut hijau, bisa disesuaikan */
-    border-radius: 12px;
+.section-title .icon {
+    font-size: 14px;
+}
+
+/* Tampilan Progres Kitab */
+.kitab-row {
+    margin-bottom: 5px;
+}
+
+.kitab-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 6px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background-color: #f0f4f2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #00a884; /* Warna Hijau Progres Bar */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Grid Berjejer (Tamrin & Syahriyah) */
+.sub-tamrin-title {
+    font-size: 10px;
+    font-weight: 700;
+    color: #95a5a6;
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+}
+
+.grid-tamrin, .grid-syahriyah {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.grid-syahriyah {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card-mini {
+    background-color: #f8faf9;
+    border: 1px solid #edf1ef;
+    padding: 10px 4px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.m-title {
+    font-size: 10px;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.m-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111111;
+}
+
+.font-bold {
+    color: #004d3d;
+}
+
+/* Bingkai Emas khusus untuk kolom Rata-rata */
+.gold-border {
+    border: 1.5px solid #c59b27;
+    background-color: #fdfbf4;
+}
+
+/* Grid Kartu Setoran Pekanan (Warna Hijau Muda Lembut) */
+.grid-pekanan {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.card-pekan {
+    background-color: #e8f7f4;
+    border: 1px solid #d1ede6;
+    border-radius: 10px;
+    padding: 12px 4px;
+    text-align: center;
+}
+
+.p-title {
+    font-size: 9px;
+    color: #008467;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.p-value {
+    font-size: 14px;
+    font-weight: 700;
+    color: #004d3d;
+}
+
+/* Tombol WhatsApp Mengambang */
+.floating-wa {
+    position: fixed;
+    bottom: 20px;
+    right: calc(50% - 230px); /* Memposisikan tetap di pojok kanan layar mockup */
+}
+
+@media (max-width: 500px) {
+    .floating-wa { right: 20px; }
+}
+
+.floating-wa {
+    width: 50px;
+    height: 50px;
+    background-color: #25d366;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    z-index: 99;
 }
 
-.card-info-text {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+.wa-svg {
+    width: 28px;
+    height: 28px;
 }
 
-.label-title {
-    font-size: 12px;
-    color: #64748b;
-    font-weight: 500;
-}
-
-.value-content {
-    font-size: 15px;
-    color: #0f172a;
-    font-weight: 700;
-    margin-top: 2px;
-}
-
-/* --- OVERLAY LOADING SCREEN --- */
+/* Overlay Loading */
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: 999;
-    border-radius: inherit;
 }
 
 .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #e2e8f0;
-    border-top: 4px solid #0284c7;
+    width: 35px;
+    height: 35px;
+    border: 4px solid #e1e8e5;
+    border-top: 4px solid #004d3d;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.overlay p {
-    font-size: 14px;
-    font-weight: 600;
-    color: #334155;
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
