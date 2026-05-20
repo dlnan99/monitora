@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Wali Santri - Attauhidiyyah</title>
+    <title>Monitor Santri Attauhidiyyah</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -11,71 +11,89 @@
 
     <div class="app-container">
         
-        <!-- HALAMAN LOGIN -->
-        <div id="login-page" class="page-wrapper">
-            <header class="login-header">
-                <div class="logo-area">✨</div>
-                <h1>Portal Wali Santri</h1>
-                <p>Silakan masuk menggunakan Nomor Induk Santri untuk melihat perkembangan buah hati Anda.</p>
-            </header>
-
-            <main class="login-body">
+        <div id="login-page" class="page-wrapper login-bg">
+            <div class="login-card">
+                <div class="login-logo">🕌</div>
+                <h2>Portal Wali Santri</h2>
+                <p>MDS Kelas 3 Ibtida B - Attauhidiyyah</p>
+                
                 <div class="form-group">
-                    <label for="nis-input">Nomor Induk Santri (NIS)</label>
-                    <input type="number" id="nis-input" placeholder="Masukkan NIS santri..." inputmode="numeric">
+                    <label>Nomor Induk Santri (NIS)</label>
+                    <input type="number" id="nis-input" placeholder="Masukkan nomor NIS..." inputmode="numeric">
                 </div>
-                <button id="btn-login" onclick="prosesLogin()">Masuk Ke Dashboard</button>
+                <button id="btn-login" onclick="prosesLogin()">Masuk Dashboard</button>
                 <div id="login-error" class="error-text"></div>
-            </main>
-            
-            <footer class="login-footer">
-                <p>Kelas 3 Ibtida B • Madrasah Attauhidiyyah</p>
-            </footer>
+            </div>
         </div>
 
-        <!-- HALAMAN DASHBOARD UTAMA (TERSEMBUNYI DI AWAL) -->
         <div id="dashboard-page" class="page-wrapper" style="display: none;">
+            
             <header class="main-header">
                 <div class="header-top">
-                    <div class="badge-status">Akses Premium</div>
+                    <p id="alamat-santri" class="alamat-text">KEDAWUNG RT/RW 8/17 BOJONG-TEGAL- JATENG</p>
                     <button class="btn-logout" onclick="logout()">Keluar</button>
                 </div>
-                <div class="user-profile">
-                    <div class="avatar">👤</div>
-                    <div class="profile-text">
-                        <span>Wali Santri dari</span>
-                        <h2 id="nama-santri">Nama Santri</h2>
-                    </div>
-                </div>
+                <h1 id="nama-santri" class="nama-text">Ahmad Dairobi</h1>
             </header>
 
             <main class="dashboard-body">
-                <h3 class="section-title">Laporan & Informasi Santri</h3>
-                <!-- Tempat data dari Google Sheets akan dipecah secara premium -->
-                <div id="detail-data-container"></div>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">📖</span> PROGRES KITAB</h3>
+                    <div id="progres-kitab-container" class="section-content">
+                        </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">📝</span> NILAI TAMRIN</h3>
+                    <div class="section-content">
+                        <div class="sub-tamrin-title">TAMRIN NAHWU</div>
+                        <div class="grid-tamrin" id="tamrin-nahwu-row">
+                            </div>
+
+                        <div class="sub-tamrin-title" style="margin-top: 15px;">TAMRIN FIQH</div>
+                        <div class="grid-tamrin" id="tamrin-fiqh-row">
+                            </div>
+                    </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">📆</span> PERKEMBANGAN SETORAN SETIAP SATU PEKAN</h3>
+                    <div class="grid-pekanan" id="setoran-pekanan-row">
+                        </div>
+                </section>
+
+                <section class="section-box">
+                    <h3 class="section-title"><span class="icon">💵</span> INFO SYAHRIYAH (11 BULAN)</h3>
+                    <div class="grid-syahriyah" id="syahriyah-row">
+                        </div>
+                </section>
+
             </main>
         </div>
 
     </div>
 
-    <!-- Efek Loading Overlay -->
+    <a href="https://wa.me/628XXXXXXXXXX" class="floating-wa" target="_blank" id="wa-button" style="display: none;">
+        <svg viewBox="0 0 32 32" class="wa-svg"><path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.733 5.48 2.01 7.79l-2.01 7.336 7.514-1.972c2.247 1.217 4.815 1.916 7.549 1.916 8.837 0 16-7.163 16-16s-7.163-16-16-16zm8.93 21.722c-.37 1.042-1.812 1.905-2.5 1.975-.625.064-1.41.096-2.28-.192-.544-.179-1.226-.41-2.074-.775-3.606-1.55-5.932-5.234-6.113-5.474-.175-.24-1.458-1.944-1.458-3.71 0-1.765.922-2.632 1.252-2.984.323-.353.71-.442.946-.442.237 0 .474.003.68.013.214.01.502-.083.784.6.292.71 1.002 2.453 1.09 2.632.088.18.146.39.026.632-.117.242-.178.393-.353.6-.175.204-.37.457-.526.613-.175.176-.357.367-.152.716.204.347.91 1.503 1.95 2.43 1.336 1.19 2.464 1.56 2.81 1.72.347.162.55.136.756-.1.204-.24.876-1.02 1.11-1.37.234-.35.468-.292.784-.176.315.117 2.01 1.026 2.41 1.226.402.2.67.298.766.467.098.168.098.974-.272 2.017z" fill="#fff"/></svg>
+    </a>
+
     <div id="loading-overlay" class="overlay" style="display: none;">
         <div class="spinner"></div>
-        <p>Memverifikasi data...</p>
+        <p>Memvalidasi NIS Santri...</p>
     </div>
 
     <script>
-        // PENTING: Ganti dengan URL Web App Google Apps Script Anda!
-        const webAppUrl = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
+        // MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI SINI
+        const webAppUrl = "PASTE_URL_WEB_APP_ANDA_DI_SINI";
 
-        // Pastikan nama kolom NIS di Google Sheets Anda ditulis "NIS" (Huruf besar semua)
         async function prosesLogin() {
             const nisInput = document.getElementById('nis-input').value.trim();
             const errorDiv = document.getElementById('login-error');
             const loading = document.getElementById('loading-overlay');
 
             if (!nisInput) {
-                errorDiv.innerText = "Mohon masukkan nomor NIS terlebih dahulu.";
+                errorDiv.innerText = "NIS tidak boleh kosong!";
                 return;
             }
 
@@ -86,42 +104,77 @@
                 const response = await fetch(webAppUrl);
                 const data = await response.json();
                 
-                // Cari data santri berdasarkan NIS
-                const santriDitemukan = data.find(item => item.NIS == nisInput || item.nis == nisInput);
+                // Pencarian berdasarkan NIS (Kolom di Excel Anda harus bernama "NIS")
+                const santri = data.find(item => item.NIS == nisInput || item.nis == nisInput);
 
-                if (santriDitemukan) {
-                    // Jika NIS cocok, tampilkan halaman dashboard
+                if (santri) {
                     document.getElementById('login-page').style.display = 'none';
-                    document.getElementById('dashboard-page').style.display = 'flex';
+                    document.getElementById('dashboard-page').style.display = 'block';
+                    document.getElementById('wa-button').style.display = 'flex';
                     
-                    // Set nama santri di header
-                    document.getElementById('nama-santri').innerText = santriDitemukan['Nama'] || santriDitemukan['NAMA'] || 'Santri';
+                    // Pemetaan Data Header
+                    document.getElementById('nama-santri').innerText = santri['Nama'] || santri['NAMA'] || 'Nama Santri';
+                    document.getElementById('alamat-santri').innerText = santri['Alamat'] || santri['ALAMAT'] || 'ALAMAT BELUM DIISI';
 
-                    // Pecah data lainnya ke dalam komponen mewah
-                    const container = document.getElementById('detail-data-container');
-                    container.innerHTML = '';
+                    // ================= 1. RENDER PROGRES KITAB =================
+                    // Contoh jika kolom di Excel bernama: Progres Jurumiyah, Progres Tasrif
+                    const kitabContainer = document.getElementById('progres-kitab-container');
+                    kitabContainer.innerHTML = `
+                        <div class="kitab-row">
+                            <div class="kitab-info"><span>JURUMIYAH (27 HAL)</span> <span>${santri['Progres Jurumiyah'] || '0'}%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: ${santri['Progres Jurumiyah'] || 0}%"></div></div>
+                        </div>
+                        <div class="kitab-row" style="margin-top: 12px;">
+                            <div class="kitab-info"><span>TASRIF (45 HAL)</span> <span>${santri['Progres Tasrif'] || '0'}%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: ${santri['Progres Tasrif'] || 0}%"></div></div>
+                        </div>
+                    `;
 
-                    for (const key in santriDitemukan) {
-                        // Jangan tampilkan NIS dan Nama lagi di dalam list detail bawah
-                        if (key.toLowerCase() !== 'nis' && key.toLowerCase() !== 'nama') {
-                            const row = document.createElement('div');
-                            row.className = 'premium-card-row';
-                            row.innerHTML = `
-                                <div class="card-icon">📊</div>
-                                <div class="card-info-text">
-                                    <span class="label-title">${key}</span>
-                                    <span class="value-content">${santriDitemukan[key]}</span>
-                                </div>
-                            `;
-                            container.appendChild(row);
-                        }
-                    }
+                    // ================= 2. RENDER NILAI TAMRIN =================
+                    // Kolom Excel disesuaikan: Tamrin Nahwu Dzulaqdah, Tamrin Nahwu Dzulhijjah, dll.
+                    const nahwuRow = document.getElementById('tamrin-nahwu-row');
+                    nahwuRow.innerHTML = `
+                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value">${santri['Tamrin Nahwu Dzulaqdah'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['Tamrin Nahwu Dzulhijjah'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Muharram</span><span class="m-value">${santri['Tamrin Nahwu Muharram'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Safar</span><span class="m-value">${santri['Tamrin Nahwu Safar'] || '-'}</span></div>
+                        <div class="card-mini gold-border"><span class="m-title">rata-rata</span><span class="m-value">${santri['Rata Tamrin Nahwu'] || '-'}</span></div>
+                    `;
+
+                    const fiqhRow = document.getElementById('tamrin-fiqh-row');
+                    fiqhRow.innerHTML = `
+                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value">${santri['Tamrin Fiqh Dzulaqdah'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['Tamrin Fiqh Dzulhijjah'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Muharram</span><span class="m-value">${santri['Tamrin Fiqh Muharram'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Safar</span><span class="m-value">${santri['Tamrin Fiqh Safar'] || '-'}</span></div>
+                        <div class="card-mini gold-border"><span class="m-title">rata-rata</span><span class="m-value">${santri['Rata Tamrin Fiqh'] || '-'}</span></div>
+                    `;
+
+                    // ================= 3. RENDER PERKEMBANGAN SETORAN =================
+                    // Kolom Excel: Setoran Pekan 1, Setoran Pekan 2, dst.
+                    const setoranRow = document.getElementById('setoran-pekanan-row');
+                    setoranRow.innerHTML = `
+                        <div class="card-pekan"><span class="p-title">PEKAN 1</span><span class="p-value">${santri['Setoran Pekan 1'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 2</span><span class="p-value">${santri['Setoran Pekan 2'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 3</span><span class="p-value">${santri['Setoran Pekan 3'] || '-'}</span></div>
+                        <div class="card-pekan"><span class="p-title">PEKAN 4</span><span class="p-value">${santri['Setoran Pekan 4'] || '-'}</span></div>
+                    `;
+
+                    // ================= 4. RENDER INFO SYAHRIYAH =================
+                    // Kolom Excel: Syahriyah Syawal, Syahriyah Dzulaqdah, Syahriyah Dzulhijjah
+                    const syahriyahRow = document.getElementById('syahriyah-row');
+                    syahriyahRow.innerHTML = `
+                        <div class="card-mini"><span class="m-title">Syawal</span><span class="m-value font-bold">${santri['Syahriyah Syawal'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulqa'dah</span><span class="m-value font-bold">${santri['Syahriyah Dzulaqdah'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value font-bold">${santri['Syahriyah Dzulhijjah'] || '-'}</span></div>
+                    `;
+
                 } else {
-                    errorDiv.innerText = "Nomor NIS tidak ditemukan. Silakan periksa kembali atau hubungi pengurus.";
+                    errorDiv.innerText = "NIS tidak ditemukan! Periksa kembali nomor NIS buah hati Anda.";
                 }
             } catch (error) {
                 console.error(error);
-                errorDiv.innerText = "Terjadi gangguan koneksi. Silakan coba lagi.";
+                errorDiv.innerText = "Gagal memuat data, periksa koneksi internet.";
             } finally {
                 loading.style.display = "none";
             }
@@ -130,6 +183,7 @@
         function logout() {
             document.getElementById('nis-input').value = '';
             document.getElementById('dashboard-page').style.display = 'none';
+            document.getElementById('wa-button').style.display = 'none';
             document.getElementById('login-page').style.display = 'flex';
         }
     </script>
