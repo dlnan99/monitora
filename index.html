@@ -3,136 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Wali Santri Premium</title>
-    <!-- Menggunakan framework CSS Tailwind via CDN agar tampilan premium & sangat ringan -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Portal Wali Santri - Attauhidiyyah</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gray-50 font-sans antialiased text-gray-800">
+<body>
 
-    <!-- Header / Navbar Premium -->
-    <header class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-md mx-auto px-4 py-4 flex justify-between items-center">
-            <div>
-                <h1 class="text-xl font-bold tracking-wide">ATTAUHIDIYYAH</h1>
-                <p class="text-xs text-emerald-100 font-medium">Monitoring Santri - Kelas 3 Ibtida B</p>
-            </div>
-            <!-- Indikator Status Online -->
-            <span class="flex h-3 h-3 relative">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
-            </span>
-        </div>
-    </header>
-
-    <!-- Konten Utama (Didesain Pas untuk Ukuran Layar HP) -->
-    <main class="max-w-md mx-auto px-4 py-6 min-h-screen">
+    <div class="app-container">
         
-        <!-- Kotak Pencarian / Filter Nama -->
-        <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-6">
-            <label for="search" class="block text-sm font-semibold text-gray-600 mb-2">Cari Data Santri</label>
-            <div class="relative">
-                <input type="text" id="search" placeholder="Ketik nama santri..." 
-                       class="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 pl-10 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition-all text-sm">
-                <span class="absolute left-3 top-3.5 text-gray-400">🔍</span>
-            </div>
-        </div>
+        <!-- HALAMAN LOGIN -->
+        <div id="login-page" class="page-wrapper">
+            <header class="login-header">
+                <div class="logo-area">✨</div>
+                <h1>Portal Wali Santri</h1>
+                <p>Silakan masuk menggunakan Nomor Induk Santri untuk melihat perkembangan buah hati Anda.</p>
+            </header>
 
-        <!-- Loading Animation -->
-        <div id="loading" class="flex flex-col items-center justify-center py-12">
-            <div class="animate-spin rounded-full h-10 w-10 border-4 border-emerald-500 border-t-transparent"></div>
-            <p class="text-gray-500 text-sm mt-3 font-medium">Memuat data dari pusat...</p>
-        </div>
-
-        <!-- Container untuk List Kartu Data Santri -->
-        <div id="santri-container" class="space-y-4 hidden">
-            <!-- Data akan otomatis muncul di sini via JavaScript -->
-        </div>
-
-    </main>
-
-    <!-- Footer Premium Ringan -->
-    <footer class="bg-white border-t border-gray-100 py-6 mt-12 text-center text-xs text-gray-400">
-        <p>&copy; 2026 Admin Attauhidiyyah. All Rights Reserved.</p>
-    </footer>
-
-    <!-- JAVASCRIPT: Menghubungkan ke Google Sheets -->
-    <script>
-        // PENTING: Ganti teks di bawah ini dengan URL Web App Google Script Anda yang panjang tadi!
-        const API_URL = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
-
-        const loadingEl = document.getElementById('loading');
-        const containerEl = document.getElementById('santri-container');
-        const searchInput = document.getElementById('search');
-        let dataSantri = [];
-
-        // Fungsi mengambil data dari Google Sheets via API
-        async function ambilData() {
-            try {
-                const response = await fetch(API_URL);
-                dataSantri = await response.json();
-                
-                loadingEl.classList.add('hidden');
-                containerEl.classList.remove('hidden');
-                
-                tampilkanData(dataSantri);
-            } catch (error) {
-                console.error("Gagal memuat data:", error);
-                loadingEl.innerHTML = `<p class="text-red-500 text-sm font-semibold">Gagal memuat data. Periksa kembali konfigurasi API Anda.</p>`;
-            }
-        }
-
-        // Fungsi menyusun data Spreadsheet ke dalam bentuk kartu-kartu premium di HP
-        function tampilkanData(data) {
-            containerEl.innerHTML = '';
+            <main class="login-body">
+                <div class="form-group">
+                    <label for="nis-input">Nomor Induk Santri (NIS)</label>
+                    <input type="number" id="nis-input" placeholder="Masukkan NIS santri..." inputmode="numeric">
+                </div>
+                <button id="btn-login" onclick="prosesLogin()">Masuk Ke Dashboard</button>
+                <div id="login-error" class="error-text"></div>
+            </main>
             
-            if (data.length === 0) {
-                containerEl.innerHTML = `<div class="text-center py-8 text-gray-400 text-sm">Data tidak ditemukan</div>`;
+            <footer class="login-footer">
+                <p>Kelas 3 Ibtida B • Madrasah Attauhidiyyah</p>
+            </footer>
+        </div>
+
+        <!-- HALAMAN DASHBOARD UTAMA (TERSEMBUNYI DI AWAL) -->
+        <div id="dashboard-page" class="page-wrapper" style="display: none;">
+            <header class="main-header">
+                <div class="header-top">
+                    <div class="badge-status">Akses Premium</div>
+                    <button class="btn-logout" onclick="logout()">Keluar</button>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar">👤</div>
+                    <div class="profile-text">
+                        <span>Wali Santri dari</span>
+                        <h2 id="nama-santri">Nama Santri</h2>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-body">
+                <h3 class="section-title">Laporan & Informasi Santri</h3>
+                <!-- Tempat data dari Google Sheets akan dipecah secara premium -->
+                <div id="detail-data-container"></div>
+            </main>
+        </div>
+
+    </div>
+
+    <!-- Efek Loading Overlay -->
+    <div id="loading-overlay" class="overlay" style="display: none;">
+        <div class="spinner"></div>
+        <p>Memverifikasi data...</p>
+    </div>
+
+    <script>
+        // PENTING: Ganti dengan URL Web App Google Apps Script Anda!
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
+
+        // Pastikan nama kolom NIS di Google Sheets Anda ditulis "NIS" (Huruf besar semua)
+        async function prosesLogin() {
+            const nisInput = document.getElementById('nis-input').value.trim();
+            const errorDiv = document.getElementById('login-error');
+            const loading = document.getElementById('loading-overlay');
+
+            if (!nisInput) {
+                errorDiv.innerText = "Mohon masukkan nomor NIS terlebih dahulu.";
                 return;
             }
 
-            data.forEach(santri => {
-                // Membuat kartu data otomatis berdasarkan kolom di spreadsheet Anda
-                // Kita buat dinamis agar mencetak semua data kolom yang ada
-                let detailDataHTML = '';
-                
-                // Meloop isi kolom (melewatkan nama kolom pertama yang biasanya 'Nama')
-                for (const [kunci, nilai] of Object.entries(santri)) {
-                    if (kunci.toLowerCase() !== 'nama' && nilai !== '') {
-                        detailDataHTML += `
-                            <div class="flex justify-between border-b border-gray-50 py-2 text-sm">
-                                <span class="text-gray-400 capitalize">${kunci}</span>
-                                <span class="font-semibold text-gray-700">${nilai}</span>
-                            </div>
-                        `;
-                    }
-                }
+            errorDiv.innerText = "";
+            loading.style.display = "flex";
 
-                const kartuHTML = `
-                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition-shadow">
-                        <div class="bg-gradient-to-r from-slate-50 to-gray-50 px-4 py-3 border-b border-gray-100">
-                            <h3 class="font-bold text-emerald-800 text-base uppercase tracking-wide">${santri.Nama || santri.nama || 'Tanpa Nama'}</h3>
-                        </div>
-                        <div class="p-4 space-y-1">
-                            ${detailDataHTML}
-                        </div>
-                    </div>
-                `;
-                containerEl.insertAdjacentHTML('beforeend', kartuHTML);
-            });
+            try {
+                const response = await fetch(webAppUrl);
+                const data = await response.json();
+                
+                // Cari data santri berdasarkan NIS
+                const santriDitemukan = data.find(item => item.NIS == nisInput || item.nis == nisInput);
+
+                if (santriDitemukan) {
+                    // Jika NIS cocok, tampilkan halaman dashboard
+                    document.getElementById('login-page').style.display = 'none';
+                    document.getElementById('dashboard-page').style.display = 'flex';
+                    
+                    // Set nama santri di header
+                    document.getElementById('nama-santri').innerText = santriDitemukan['Nama'] || santriDitemukan['NAMA'] || 'Santri';
+
+                    // Pecah data lainnya ke dalam komponen mewah
+                    const container = document.getElementById('detail-data-container');
+                    container.innerHTML = '';
+
+                    for (const key in santriDitemukan) {
+                        // Jangan tampilkan NIS dan Nama lagi di dalam list detail bawah
+                        if (key.toLowerCase() !== 'nis' && key.toLowerCase() !== 'nama') {
+                            const row = document.createElement('div');
+                            row.className = 'premium-card-row';
+                            row.innerHTML = `
+                                <div class="card-icon">📊</div>
+                                <div class="card-info-text">
+                                    <span class="label-title">${key}</span>
+                                    <span class="value-content">${santriDitemukan[key]}</span>
+                                </div>
+                            `;
+                            container.appendChild(row);
+                        }
+                    }
+                } else {
+                    errorDiv.innerText = "Nomor NIS tidak ditemukan. Silakan periksa kembali atau hubungi pengurus.";
+                }
+            } catch (error) {
+                console.error(error);
+                errorDiv.innerText = "Terjadi gangguan koneksi. Silakan coba lagi.";
+            } finally {
+                loading.style.display = "none";
+            }
         }
 
-        // Fitur Pencarian Real-Time (Ketik langsung menyaring)
-        searchInput.addEventListener('input', (e) => {
-            const keyword = e.target.value.toLowerCase();
-            const dataDisaring = dataSantri.filter(santri => {
-                const namaSantri = (santri.Nama || santri.nama || '').toLowerCase();
-                return namaSantri.includes(keyword);
-            });
-            tampilkanData(dataDisaring);
-        });
-
-        // Jalankan fungsi ambil data saat halaman dibuka
-        ambilData();
+        function logout() {
+            document.getElementById('nis-input').value = '';
+            document.getElementById('dashboard-page').style.display = 'none';
+            document.getElementById('login-page').style.display = 'flex';
+        }
     </script>
 </body>
 </html>
