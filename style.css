@@ -1,466 +1,442 @@
-/* reset & variabel utama (huruf kecil semua) */
+/* Core Styling - Premium Mobile View Layout */
 * {
     margin: 0;
     padding: 0;
+    box-shadow: none;
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-:root {
-    --bg-dark-deep: #090d16;     
-    --bg-card: #131a26;          
-    --text-primary: #f8fafc;     
-    --text-secondary: #94a3b8;   
-    --gold-premium: #e2b659;     
-    --emerald-green: #10b981;    
-    --sapphire-blue: #3b82f6;    
-    --danger-red: #ef4444;       
-    --card-radius: 18px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-    background-color: var(--bg-dark-deep);
-    color: var(--text-primary);
+    background-color: #f3f7f5;
+    color: #1e293b;
     display: flex;
     justify-content: center;
     min-height: 100vh;
 }
 
-/* container khusus versi mobile */
-.appcontainer {
+.app-container {
     width: 100%;
-    max-width: 480px; 
-    padding: 20px 16px;
+    max-width: 480px; /* Dikunci maksimal selebar HP premium */
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 77, 61, 0.06);
+}
+
+.page-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    min-height: 100vh;
 }
 
-.textgold { color: var(--gold-premium); }
-.hidden { display: none !important; }
-
-/* header utama */
-.mainheader {
-    background: linear-gradient(135deg, #162235 0%, #111823 100%);
+/* ================= LOGIN SCREEN ================= */
+.login-bg {
+    background: linear-gradient(135deg, #004d3d 0%, #00261e 100%);
+    justify-content: center;
+    align-items: center;
     padding: 24px;
-    border-radius: var(--card-radius);
-    border: 1px solid rgba(226, 182, 89, 0.15);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    position: relative;
 }
 
-.headerbadge {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    background: rgba(16, 185, 129, 0.15);
-    padding: 4px 10px;
-    border-radius: 20px;
+.login-card {
+    background: #ffffff;
+    width: 100%;
+    padding: 40px 24px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
 
-.statusaktif { color: var(--emerald-green); }
+.login-logo {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
 
-/* urutan tampilan nama besar alamat */
-.nama {
+.login-card h2 {
+    color: #004d3d;
     font-size: 24px;
     font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-    text-transform: uppercase;
 }
 
-.alamat {
+.login-card p {
     font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    line-height: 1.4;
+    color: #64748b;
+    margin-top: 6px;
+    margin-bottom: 30px;
 }
 
-.meta-info {
+.form-group {
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #004d3d;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 16px;
+    font-weight: 600;
+    color: #004d3d;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c59b27;
+    background-color: #ffffff;
+}
+
+#btn-login {
+    width: 100%;
+    padding: 16px;
+    background-color: #004d3d;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 77, 61, 0.2);
+}
+
+.error-text {
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+/* ================= DASHBOARD HEAD & BODY ================= */
+.main-header {
+    background-color: #004d3d;
+    color: #ffffff;
+    padding: 30px 20px 40px 20px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+}
+
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 12px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--text-secondary);
+    margin-bottom: 16px;
 }
 
-.statuspendaftaran {
-    background-color: var(--emerald-green);
-    color: #000;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 6px;
+.badge-status {
+    background: rgba(197, 155, 39, 0.2);
+    color: #ebd07b;
+    padding: 6px 14px;
+    border-radius: 100px;
     font-size: 11px;
-}
-
-/* gaya dasar kartu section */
-.sectioncard {
-    background-color: var(--bg-card);
-    border-radius: var(--card-radius);
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
-}
-
-.sectiontitle {
-    font-size: 15px;
     font-weight: 700;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    border: 1px solid rgba(197, 155, 39, 0.3);
 }
 
-.titlesub {
+.btn-logout {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
     font-size: 12px;
-    color: var(--text-secondary);
-    font-weight: 400;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-/* progres melingkar besar mewah */
-.progresscirclecontainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 15px;
-    padding: 10px 0;
-}
-
-.progressbox {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-}
-
-.circlewrapper {
-    position: relative;
-    width: 105px;
-    height: 105px;
-}
-
-.circlesvg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.circlesvg circle {
-    fill: none;
-    stroke-width: 6;
-}
-
-.circlesvg circle.bg {
-    stroke: rgba(255, 255, 255, 0.05);
-}
-
-.circlesvg circle.progress {
-    stroke-linecap: round;
-    stroke-dasharray: 220; 
-}
-
-.circlesvg circle.jurumiyah { stroke: var(--gold-premium); }
-.circlesvg circle.tasrif { stroke: var(--sapphire-blue); }
-
-.circlenumber {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20px;
+.nama-text {
+    font-size: 26px;
     font-weight: 800;
-    text-align: center;
+    letter-spacing: -0.5px;
 }
 
-.circleunit {
-    display: block;
-    font-size: 10px;
-    color: var(--text-secondary);
+.alamat-text {
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 6px;
+    line-height: 1.5;
     font-weight: 500;
 }
 
-.circlelabel {
+.dashboard-body {
+    padding: 20px;
+}
+
+/* Container Box Induk */
+.section-box {
+    background: #ffffff;
+    border: 2px solid #edf2f0;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+}
+
+.no-border {
+    border: none;
+    padding: 10px 0;
+}
+
+.section-title {
     font-size: 12px;
-    font-weight: 600;
-    color: var(--text-secondary);
+    font-weight: 800;
+    color: #004d3d;
+    border-bottom: 2px solid #f8faf9;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ================= 1. LUXURIOUS CIRCULAR PROGRESS ================= */
+.circular-progress-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 2px solid #edf2f0;
+}
+
+.circle-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
 
-/* grid setoran pekanan (satu bulan 4 pekan) */
-.setorangrid {
+.progress-circular {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: conic-gradient(var(--c) calc(var(--p) * 1%), #f1f5f3 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 12px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+}
+
+.progress-circular::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.circle-percent {
+    position: relative;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e293b;
+}
+
+.circle-label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #004d3d;
+    letter-spacing: 0.5px;
+}
+
+.circle-sub-label {
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+/* ================= 2. PEKANAN & TAMRIN GRIDS ================= */
+.grid-pekanan {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.setoranitem {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.card-pekan {
+    background-color: #e6f5f1;
+    border: 1px solid #ccece4;
     border-radius: 12px;
-    padding: 12px 4px;
+    padding: 14px 4px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
 }
 
-.pekantitle {
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--text-secondary);
-}
-
-.statusicon { font-size: 15px; }
-.pekandesc { font-size: 11px; font-weight: 600; }
-
-.statusdone {
-    border-color: rgba(16, 185, 129, 0.3);
-    color: var(--emerald-green);
-    background: rgba(16, 185, 129, 0.05);
-}
-
-.statuspending { color: var(--text-secondary); }
-
-/* tamrin nahwu & fiqh */
-.tamrincontainer {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.tamringroup h3 {
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.indicator {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    display: inline-block;
-}
-.indicator.nahwu { background-color: var(--gold-premium); }
-.indicator.fiqh { background-color: var(--sapphire-blue); }
-
-.tamrinbadgerow {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding-bottom: 4px;
-}
-
-.scorebadge {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 6px 8px;
-    border-radius: 8px;
-    font-size: 10px;
-    color: var(--text-secondary);
-    flex: 1;
-    text-align: center;
-    min-width: 60px;
-}
-
-.scorebadge span {
+.p-title {
+    font-size: 9px;
+    color: #008467;
+    font-weight: 700;
     display: block;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-top: 2px;
+    margin-bottom: 4px;
 }
 
-/* laporan sahriyah 11 bulan */
-.sahriyahlist {
+.p-value {
+    font-size: 15px;
+    font-weight: 800;
+    color: #004d3d;
+}
+
+.sub-tamrin-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+.grid-tamrin {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+}
+
+.card-mini {
+    background-color: #f8faf9;
+    border: 1px solid #f1f5f3;
+    padding: 10px 2px;
+    border-radius: 10px;
+    text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    max-height: 230px; 
-    overflow-y: auto;  
-    padding-right: 4px;
+    justify-content: center;
 }
 
-.sahriyahrow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 14px;
-    border-radius: 10px;
-    font-size: 13px;
+.m-title {
+    font-size: 9px;
+    color: #64748b;
     font-weight: 600;
+    margin-bottom: 4px;
 }
 
-.sahriyahrow.paid {
-    background: rgba(16, 185, 129, 0.06);
-    border: 1px solid rgba(16, 185, 129, 0.15);
+.m-value {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
 }
 
-.sahriyahrow.paid .paystatus {
-    color: var(--emerald-green);
-    font-size: 12px;
+.gold-border {
+    border: 1.5px solid #c59b27;
+    background-color: #fefcf3;
 }
 
-.sahriyahrow.unpaid {
-    background: rgba(239, 68, 68, 0.06);
-    border: 1px solid rgba(239, 68, 68, 0.12);
+/* ================= 3. STATUS & SYAHRIYAH GRIDS ================= */
+.grid-dua-kolom {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 16px;
 }
 
-.sahriyahrow.unpaid .paystatus {
-    color: var(--danger-red);
-    font-size: 11px;
-    background: rgba(239, 68, 68, 0.15);
-    padding: 2px 8px;
-    border-radius: 4px;
+.status-box-premium {
+    display: flex;
+    flex-direction: column;
 }
 
-/* sholawat fatih (super gelap, tulisan sangat terang) */
-.sholawatsection {
-    background-color: #020407; 
-    border: 1px solid rgba(226, 182, 89, 0.25);
-    border-radius: var(--card-radius);
-    padding: 24px 18px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+.status-label {
+    font-size: 10px;
+    font-weight: 800;
+    color: #64748b;
+    margin-bottom: 6px;
 }
 
-.sholawatbox { text-align: center; }
-.sholawattitle {
+.status-value {
+    font-size: 16px;
+    font-weight: 800;
+    color: #00a884;
+}
+
+.status-value-sub {
     font-size: 14px;
-    color: var(--gold-premium);
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    color: #c59b27;
 }
 
-.arabic {
-    font-size: 22px;
+.text-right {
+    text-align: right;
+}
+
+.grid-syahriyah {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.font-emerald {
+    color: #004d3d;
+    font-weight: 800;
+}
+
+/* ================= 4. DARK MODE SHOLAWAT FATIH ================= */
+.sholawat-section {
+    background: linear-gradient(135deg, #0f1a17 0%, #070f0d 100%);
+    border-radius: 24px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    border: 1px solid rgba(197, 155, 39, 0.2);
+}
+
+.sholawat-header {
+    color: #ebd07b;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    text-shadow: 0 0 10px rgba(235, 208, 123, 0.3);
+}
+
+.sholawat-arabic {
+    font-size: 20px;
+    color: #ffffff;
     line-height: 2.2;
-    color: #ffffff; /* putih bersinar sangat terang */
-    font-weight: 700;
-    direction: rtl; 
+    direction: rtl;
+    font-weight: 500;
     margin-bottom: 16px;
-    text-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-}
-
-.translation {
-    font-size: 11px;
-    color: #cbd5e1;
-    line-height: 1.6;
-    font-style: italic;
     text-align: justify;
 }
 
-/* auth/login style */
-.authcontainer {
-    width: 100%;
-    max-width: 480px;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-}
-
-.authbox {
-    background-color: var(--bg-card);
-    width: 100%;
-    border-radius: var(--card-radius);
-    padding: 35px 24px;
-    border: 1px solid rgba(226, 182, 89, 0.1);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    text-align: center;
-}
-
-.authlogo {
-    width: 65px;
-    height: 65px;
-    background: rgba(226, 182, 89, 0.1);
-    border: 1px solid var(--gold-premium);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 26px;
-    margin: 0 auto 20px;
-}
-
-.authbox h2 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 8px;
-}
-
-.authbox p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-    margin-bottom: 25px;
-}
-
-.inputgroup {
-    position: relative;
-    margin-bottom: 16px;
-}
-
-.inputicon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-secondary);
-}
-
-.inputgroup input {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 14px 16px 14px 48px;
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-size: 15px;
-    outline: none;
-}
-
-.inputgroup input:focus { border-color: var(--gold-premium); }
-
-.btnlogin {
-    width: 100%;
-    background: linear-gradient(135deg, var(--gold-premium) 0%, #b88e32 100%);
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    color: #000;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.errortext { color: var(--danger-red); margin-top: 12px; font-weight: 600; }
-
-.btnlogout {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: var(--text-secondary);
+.sholawat-footer {
     font-size: 11px;
+    color: #64748b;
     font-weight: 600;
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-    width: 100%;
+    letter-spacing: 0.5px;
 }
 
-.sahriyahlist::-webkit-scrollbar { width: 4px; }
-.sahriyahlist::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+/* ================= OVERLAY LOADING ================= */
+.overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #004d3d;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 12px;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
