@@ -1,4 +1,4 @@
-/* Core Styling - Premium Mobile View Layout */
+/* Core Layout Styling - Dioptimalkan Khusus Tampilan HP */
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +18,7 @@ body {
 
 .app-container {
     width: 100%;
-    max-width: 480px; /* Dikunci maksimal selebar HP premium */
+    max-width: 480px; /* Lebar dikunci pas layar HP */
     background-color: #ffffff;
     min-height: 100vh;
     position: relative;
@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
 }
 
-/* ================= LOGIN SCREEN ================= */
+/* ================= DESAIN HALAMAN LOGIN ================= */
 .login-bg {
     background: linear-gradient(135deg, #004d3d 0%, #00261e 100%);
     justify-content: center;
@@ -90,7 +90,6 @@ body {
     font-size: 16px;
     font-weight: 600;
     color: #004d3d;
-    transition: all 0.2s;
 }
 
 .form-group input:focus {
@@ -119,7 +118,7 @@ body {
     font-weight: 600;
 }
 
-/* ================= DASHBOARD HEAD & BODY ================= */
+/* ================= DESAIN HEADER UTAMA ================= */
 .main-header {
     background-color: #004d3d;
     color: #ffffff;
@@ -174,7 +173,7 @@ body {
     padding: 20px;
 }
 
-/* Container Box Induk */
+/* Wadah Box Utama */
 .section-box {
     background: #ffffff;
     border: 2px solid #edf2f0;
@@ -189,7 +188,7 @@ body {
 }
 
 .section-title {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     color: #004d3d;
     border-bottom: 2px solid #f8faf9;
@@ -198,9 +197,10 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    letter-spacing: 0.5px;
 }
 
-/* ================= 1. LUXURIOUS CIRCULAR PROGRESS ================= */
+/* ================= 1. HAFALAN LINGKARAN MEWAH ================= */
 .circular-progress-container {
     display: flex;
     justify-content: space-around;
@@ -228,7 +228,6 @@ body {
     justify-content: center;
     position: relative;
     margin-bottom: 12px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
 }
 
 .progress-circular::before {
@@ -248,7 +247,7 @@ body {
 }
 
 .circle-label {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 800;
     color: #004d3d;
     letter-spacing: 0.5px;
@@ -261,7 +260,7 @@ body {
     margin-top: 2px;
 }
 
-/* ================= 2. PEKANAN & TAMRIN GRIDS ================= */
+/* ================= 2. DESAIN GRIDS (SETORAN & TAMRIN) ================= */
 .grid-pekanan {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -300,7 +299,7 @@ body {
 
 .grid-tamrin {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* Diubah jadi 5 agar pas dengan hilangnya T5/F5 */
+    grid-template-columns: repeat(5, 1fr); /* Pas untuk 4 nilai + 1 rata-rata */
     gap: 6px;
 }
 
@@ -333,7 +332,7 @@ body {
     background-color: #fefcf3;
 }
 
-/* ================= 3. STATUS SANTRI COMBINED ================= */
+/* ================= 3. DESAIN STATUS SANTRI GABUNGAN ================= */
 .status-santri-box {
     padding: 16px 18px;
 }
@@ -373,15 +372,36 @@ body {
     font-weight: 800;
     color: #c59b27;
 }
-/* ================= 4. DARK MODE SHOLAWAT FATIH ================= */
+
+.text-right {
+    text-align: right;
+}
+
+/* ================= 4. GRID SYAHRIYAH 11 BULAN ================= */
+.grid-syahriyah {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+}
+
+.font-emerald {
+    color: #004d3d;
+    font-weight: 800;
+}
+
+.font-bold {
+    font-weight: 800;
+}
+
+/* ================= 5. DESAIN GLOWING SHOLAWAT FATIH ================= */
 .sholawat-section {
-    background: linear-gradient(135deg, #0f1a17 0%, #070f0d 100%);
+    background: linear-gradient(135deg, #0e1a16 0%, #050d0a 100%);
     border-radius: 24px;
     padding: 24px;
     text-align: center;
     margin-top: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    border: 1px solid rgba(197, 155, 39, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid rgba(197, 155, 39, 0.25);
 }
 
 .sholawat-header {
@@ -389,28 +409,28 @@ body {
     font-size: 14px;
     font-weight: 800;
     letter-spacing: 1px;
-    margin-bottom: 16px;
-    text-shadow: 0 0 10px rgba(235, 208, 123, 0.3);
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px rgba(235, 208, 123, 0.4);
 }
 
 .sholawat-arabic {
-    font-size: 20px;
+    font-size: 21px;
     color: #ffffff;
-    line-height: 2.2;
+    line-height: 2.3;
     direction: rtl;
     font-weight: 500;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     text-align: justify;
 }
 
 .sholawat-footer {
     font-size: 11px;
-    color: #64748b;
+    color: #4b5563;
     font-weight: 600;
     letter-spacing: 0.5px;
 }
 
-/* ================= OVERLAY LOADING ================= */
+/* ================= OVERLAY LOADING SCREEN ================= */
 .overlay {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
