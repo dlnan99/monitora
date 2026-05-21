@@ -202,9 +202,19 @@
                         <div class="card-mini"><span class="m-title">F4</span><span class="m-value">${santri['tamrin fiqh 4'] || '-'}</span></div>
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgFiqh}</span></div>
                     `;
-                    // 5. Render Status Pendaftaran & Status Santri Semester 1
-                    document.getElementById('status-pendaftaran').innerText = santri['status pendaftaran'] || '-';
-                    document.getElementById('status-santri-sem1').innerText = santri['status santri semester 1'] || '-';
+<section class="section-box status-santri-box">
+                    <h3 class="section-title"><span class="icon">🛡️</span> STATUS SANTRI</h3>
+                    <div class="status-combined-grid">
+                        <div class="status-item">
+                            <span class="status-sub-label">Pendaftaran:</span>
+                            <span id="status-pendaftaran" class="status-val-green font-bold">-</span>
+                        </div>
+                        <div class="status-item text-right">
+                            <span class="status-sub-label">Ujian Sem 1:</span>
+                            <span id="status-santri-sem1" class="status-val-gold font-bold">-</span>
+                        </div>
+                    </div>
+                </section>
 
                     // 6. Render Syahriyah 11 Bulan (Syawal s/d Sya'ban)
                     const syahriyahRow = document.getElementById('syahriyah-row');
