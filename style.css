@@ -1,443 +1,455 @@
-/* Core Styling - Premium Mobile View Layout */
+/* Core Layout Styling - Dioptimalkan Khusus Tampilan HP */
 * {
-margin: 0;
-padding: 0;
-box-shadow: none;
-box-sizing: border-box;
-font-family: 'Plus Jakarta Sans', sans-serif;
--webkit-tap-highlight-color: transparent;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
-background-color: #f3f7f5;
-color: #1e293b;
-display: flex;
-justify-content: center;
-min-height: 100vh;
+    background-color: #f3f7f5;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 .app-container {
-width: 100%;
-max-width: 480px; /* Dikunci maksimal selebar HP premium */
-background-color: #ffffff;
-min-height: 100vh;
-position: relative;
-box-shadow: 0 10px 40px rgba(0, 77, 61, 0.06);
+    width: 100%;
+    max-width: 480px; /* Lebar dikunci pas layar HP */
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 10px 40px rgba(0, 77, 61, 0.06);
 }
 
 .page-wrapper {
-display: flex;
-flex-direction: column;
-min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* ================= LOGIN SCREEN ================= */
+/* ================= DESAIN HALAMAN LOGIN ================= */
 .login-bg {
-background: linear-gradient(135deg, #004d3d 0%, #00261e 100%);
-justify-content: center;
-align-items: center;
-padding: 24px;
+    background: linear-gradient(135deg, #004d3d 0%, #00261e 100%);
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
 }
 
 .login-card {
-background: #ffffff;
-width: 100%;
-padding: 40px 24px;
-border-radius: 28px;
-text-align: center;
-box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    background: #ffffff;
+    width: 100%;
+    padding: 40px 24px;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
 
 .login-logo {
-font-size: 45px;
-margin-bottom: 15px;
+    font-size: 45px;
+    margin-bottom: 15px;
 }
 
 .login-card h2 {
-color: #004d3d;
-font-size: 24px;
-font-weight: 800;
+    color: #004d3d;
+    font-size: 24px;
+    font-weight: 800;
 }
 
 .login-card p {
-font-size: 13px;
-color: #64748b;
-margin-top: 6px;
-margin-bottom: 30px;
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 6px;
+    margin-bottom: 30px;
 }
 
 .form-group {
-text-align: left;
-margin-bottom: 24px;
+    text-align: left;
+    margin-bottom: 24px;
 }
 
 .form-group label {
-display: block;
-font-size: 11px;
-font-weight: 700;
-color: #004d3d;
-margin-bottom: 8px;
-text-transform: uppercase;
-letter-spacing: 0.5px;
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #004d3d;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .form-group input {
-width: 100%;
-padding: 16px;
-border-radius: 14px;
-border: 2px solid #e2e8f0;
-background-color: #f8fafc;
-font-size: 16px;
-font-weight: 600;
-color: #004d3d;
-transition: all 0.2s;
+    width: 100%;
+    padding: 16px;
+    border-radius: 14px;
+    border: 2px solid #e2e8f0;
+    background-color: #f8fafc;
+    font-size: 16px;
+    font-weight: 600;
+    color: #004d3d;
 }
 
 .form-group input:focus {
-outline: none;
-border-color: #c59b27;
-background-color: #ffffff;
+    outline: none;
+    border-color: #c59b27;
+    background-color: #ffffff;
 }
 
 #btn-login {
-width: 100%;
-padding: 16px;
-background-color: #004d3d;
-color: #ffffff;
-border: none;
-border-radius: 14px;
-font-size: 15px;
-font-weight: 700;
-cursor: pointer;
-box-shadow: 0 8px 20px rgba(0, 77, 61, 0.2);
+    width: 100%;
+    padding: 16px;
+    background-color: #004d3d;
+    color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 77, 61, 0.2);
 }
 
 .error-text {
-color: #ef4444;
-font-size: 12px;
-margin-top: 15px;
-font-weight: 600;
+    color: #ef4444;
+    font-size: 12px;
+    margin-top: 15px;
+    font-weight: 600;
 }
 
-/* ================= DASHBOARD HEAD & BODY ================= */
+/* ================= DESAIN HEADER UTAMA ================= */
 .main-header {
-background-color: #004d3d;
-color: #ffffff;
-padding: 30px 20px 40px 20px;
-border-bottom-left-radius: 32px;
-border-bottom-right-radius: 32px;
+    background-color: #004d3d;
+    color: #ffffff;
+    padding: 30px 20px 40px 20px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
 }
 
 .header-top {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
 }
 
 .badge-status {
-background: rgba(197, 155, 39, 0.2);
-color: #ebd07b;
-padding: 6px 14px;
-border-radius: 100px;
-font-size: 11px;
-font-weight: 700;
-border: 1px solid rgba(197, 155, 39, 0.3);
+    background: rgba(197, 155, 39, 0.2);
+    color: #ebd07b;
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(197, 155, 39, 0.3);
 }
 
 .btn-logout {
-background: rgba(255, 255, 255, 0.15);
-color: white;
-border: none;
-padding: 6px 14px;
-border-radius: 10px;
-font-size: 12px;
-font-weight: 600;
-cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .nama-text {
-font-size: 26px;
-font-weight: 800;
-letter-spacing: -0.5px;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .alamat-text {
-font-size: 11px;
-opacity: 0.8;
-margin-top: 6px;
-line-height: 1.5;
-font-weight: 500;
+    font-size: 11px;
+    opacity: 0.8;
+    margin-top: 6px;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
 .dashboard-body {
-padding: 20px;
+    padding: 20px;
 }
 
-/* Container Box Induk */
+/* Wadah Box Utama */
 .section-box {
-background: #ffffff;
-border: 2px solid #edf2f0;
-border-radius: 20px;
-padding: 18px;
-margin-bottom: 16px;
+    background: #ffffff;
+    border: 2px solid #edf2f0;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
 }
 
 .no-border {
-border: none;
-padding: 10px 0;
+    border: none;
+    padding: 10px 0;
 }
 
 .section-title {
-font-size: 12px;
-font-weight: 800;
-color: #004d3d;
-border-bottom: 2px solid #f8faf9;
-padding-bottom: 10px;
-margin-bottom: 16px;
-display: flex;
-align-items: center;
-gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #004d3d;
+    border-bottom: 2px solid #f8faf9;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
 }
 
-/* ================= 1. LUXURIOUS CIRCULAR PROGRESS ================= */
+/* ================= 1. HAFALAN LINGKARAN MEWAH ================= */
 .circular-progress-container {
-display: flex;
-justify-content: space-around;
-align-items: center;
-background: #ffffff;
-padding: 20px 10px;
-border-radius: 20px;
-border: 2px solid #edf2f0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #ffffff;
+    padding: 20px 10px;
+    border-radius: 20px;
+    border: 2px solid #edf2f0;
 }
 
 .circle-wrapper {
-display: flex;
-flex-direction: column;
-align-items: center;
-text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .progress-circular {
-width: 110px;
-height: 110px;
-border-radius: 50%;
-background: conic-gradient(var(--c) calc(var(--p) * 1%), #f1f5f3 0);
-display: flex;
-align-items: center;
-justify-content: center;
-position: relative;
-margin-bottom: 12px;
-box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: conic-gradient(var(--c) calc(var(--p) * 1%), #f1f5f3 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 12px;
 }
 
 .progress-circular::before {
-content: "";
-position: absolute;
-width: 90px;
-height: 90px;
-background-color: #ffffff;
-border-radius: 50%;
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background-color: #ffffff;
+    border-radius: 50%;
 }
 
 .circle-percent {
-position: relative;
-font-size: 20px;
-font-weight: 800;
-color: #1e293b;
+    position: relative;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1e293b;
 }
 
 .circle-label {
-font-size: 12px;
-font-weight: 800;
-color: #004d3d;
-letter-spacing: 0.5px;
+    font-size: 11px;
+    font-weight: 800;
+    color: #004d3d;
+    letter-spacing: 0.5px;
 }
 
 .circle-sub-label {
-font-size: 11px;
-color: #64748b;
-font-weight: 600;
-margin-top: 2px;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2px;
 }
 
-/* ================= 2. PEKANAN & TAMRIN GRIDS ================= */
+/* ================= 2. DESAIN GRIDS (SETORAN & TAMRIN) ================= */
 .grid-pekanan {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
 .card-pekan {
-background-color: #e6f5f1;
-border: 1px solid #ccece4;
-border-radius: 12px;
-padding: 14px 4px;
-text-align: center;
+    background-color: #e6f5f1;
+    border: 1px solid #ccece4;
+    border-radius: 12px;
+    padding: 14px 4px;
+    text-align: center;
 }
 
 .p-title {
-font-size: 9px;
-color: #008467;
-font-weight: 700;
-display: block;
-margin-bottom: 4px;
+    font-size: 9px;
+    color: #008467;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 4px;
 }
 
 .p-value {
-font-size: 15px;
-font-weight: 800;
-color: #004d3d;
+    font-size: 15px;
+    font-weight: 800;
+    color: #004d3d;
 }
 
 .sub-tamrin-title {
-font-size: 10px;
-font-weight: 800;
-color: #94a3b8;
-margin-bottom: 8px;
-letter-spacing: 0.5px;
+    font-size: 10px;
+    font-weight: 800;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
 .grid-tamrin {
-display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-columns: repeat(5, 1fr); /* Diubah jadi 5 agar pas dengan hilangnya T5/F5 */
-gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* Pas untuk 4 nilai + 1 rata-rata */
+    gap: 6px;
 }
 
 .card-mini {
-background-color: #f8faf9;
-border: 1px solid #f1f5f3;
-padding: 10px 2px;
-border-radius: 10px;
-text-align: center;
-display: flex;
-flex-direction: column;
-justify-content: center;
+    background-color: #f8faf9;
+    border: 1px solid #f1f5f3;
+    padding: 10px 2px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .m-title {
-font-size: 9px;
-color: #64748b;
-font-weight: 600;
-margin-bottom: 4px;
+    font-size: 9px;
+    color: #64748b;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 
 .m-value {
-font-size: 13px;
-font-weight: 700;
-color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
 }
 
 .gold-border {
-border: 1.5px solid #c59b27;
-background-color: #fefcf3;
+    border: 1.5px solid #c59b27;
+    background-color: #fefcf3;
 }
 
-/* ================= 3. STATUS & SYAHRIYAH GRIDS ================= */
-.grid-dua-kolom {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 15px;
-padding: 16px;
+/* ================= 3. DESAIN STATUS SANTRI GABUNGAN ================= */
+.status-santri-box {
+    padding: 16px 18px;
 }
 
-.status-box-premium {
-display: flex;
-flex-direction: column;
+.status-combined-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8faf9;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #edf2f0;
 }
 
-.status-label {
-font-size: 10px;
-font-weight: 800;
-color: #64748b;
-margin-bottom: 6px;
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.status-value {
-font-size: 16px;
-font-weight: 800;
-color: #00a884;
+.status-sub-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
-.status-value-sub {
-font-size: 14px;
-font-weight: 700;
-color: #c59b27;
+.status-val-green {
+    font-size: 15px;
+    font-weight: 800;
+    color: #00a884;
+}
+
+.status-val-gold {
+    font-size: 15px;
+    font-weight: 800;
+    color: #c59b27;
 }
 
 .text-right {
-text-align: right;
+    text-align: right;
 }
 
+/* ================= 4. GRID SYAHRIYAH 11 BULAN ================= */
 .grid-syahriyah {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 6px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
 }
 
 .font-emerald {
-color: #004d3d;
-font-weight: 800;
+    color: #004d3d;
+    font-weight: 800;
 }
 
-/* ================= 4. DARK MODE SHOLAWAT FATIH ================= */
+.font-bold {
+    font-weight: 800;
+}
+
+/* ================= 5. DESAIN GLOWING SHOLAWAT FATIH ================= */
 .sholawat-section {
-background: linear-gradient(135deg, #0f1a17 0%, #070f0d 100%);
-border-radius: 24px;
-padding: 24px;
-text-align: center;
-margin-top: 10px;
-box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-border: 1px solid rgba(197, 155, 39, 0.2);
+    background: linear-gradient(135deg, #0e1a16 0%, #050d0a 100%);
+    border-radius: 24px;
+    padding: 24px;
+    text-align: center;
+    margin-top: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border: 1px solid rgba(197, 155, 39, 0.25);
 }
 
 .sholawat-header {
-color: #ebd07b;
-font-size: 14px;
-font-weight: 800;
-letter-spacing: 1px;
-margin-bottom: 16px;
-text-shadow: 0 0 10px rgba(235, 208, 123, 0.3);
+    color: #ebd07b;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    text-shadow: 0 0 10px rgba(235, 208, 123, 0.4);
 }
 
 .sholawat-arabic {
-font-size: 20px;
-color: #ffffff;
-line-height: 2.2;
-direction: rtl;
-font-weight: 500;
-margin-bottom: 16px;
-text-align: justify;
+    font-size: 21px;
+    color: #ffffff;
+    line-height: 2.3;
+    direction: rtl;
+    font-weight: 500;
+    margin-bottom: 18px;
+    text-align: justify;
 }
 
 .sholawat-footer {
-font-size: 11px;
-color: #64748b;
-font-weight: 600;
-letter-spacing: 0.5px;
+    font-size: 11px;
+    color: #4b5563;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
 
-/* ================= OVERLAY LOADING ================= */
+/* ================= OVERLAY LOADING SCREEN ================= */
 .overlay {
-position: fixed;
-top: 0; left: 0; right: 0; bottom: 0;
-background: rgba(255, 255, 255, 0.95);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-z-index: 999;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
 }
 
 .spinner {
-width: 40px;
-height: 40px;
-border: 4px solid #e2e8f0;
-border-top: 4px solid #004d3d;
-border-radius: 50%;
-animation: spin 0.8s linear infinite;
-margin-bottom: 12px;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #004d3d;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 12px;
 }
 
 @keyframes spin { 100% { transform: rotate(360deg); } }
