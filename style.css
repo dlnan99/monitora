@@ -333,53 +333,46 @@ body {
     background-color: #fefcf3;
 }
 
-/* ================= 3. STATUS & SYAHRIYAH GRIDS ================= */
-.grid-dua-kolom {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    padding: 16px;
+/* ================= 3. STATUS SANTRI COMBINED ================= */
+.status-santri-box {
+    padding: 16px 18px;
 }
 
-.status-box-premium {
+.status-combined-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8faf9;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #edf2f0;
+}
+
+.status-item {
     display: flex;
     flex-direction: column;
+    gap: 4px;
 }
 
-.status-label {
-    font-size: 10px;
-    font-weight: 800;
+.status-sub-label {
+    font-size: 11px;
+    font-weight: 700;
     color: #64748b;
-    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
 }
 
-.status-value {
-    font-size: 16px;
+.status-val-green {
+    font-size: 15px;
     font-weight: 800;
     color: #00a884;
 }
 
-.status-value-sub {
-    font-size: 14px;
-    font-weight: 700;
+.status-val-gold {
+    font-size: 15px;
+    font-weight: 800;
     color: #c59b27;
 }
-
-.text-right {
-    text-align: right;
-}
-
-.grid-syahriyah {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
-}
-
-.font-emerald {
-    color: #004d3d;
-    font-weight: 800;
-}
-
 /* ================= 4. DARK MODE SHOLAWAT FATIH ================= */
 .sholawat-section {
     background: linear-gradient(135deg, #0f1a17 0%, #070f0d 100%);
