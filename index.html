@@ -167,9 +167,17 @@
                     `;
 
                     // 4. Render Nilai Tamrin Nahwu & Fiqh (Membaca kolom huruf kecil)
+                    // ================= 4. RENDER NILAI TAMRIN NAHWU & FIQH =================
+                    // Menampilkan 4 Tamrin, dengan hasil rata-rata desimal (2 angka di belakang koma)
                     const nahwuRow = document.getElementById('tamrin-nahwu-row');
-                    let n1 = parseFloat(santri['tamrin 1']) || 0, n2 = parseFloat(santri['tamrin 2']) || 0, n3 = parseFloat(santri['tamrin 3']) || 0, n4 = parseFloat(santri['tamrin 4']) || 0, n5 = parseFloat(santri['tamrin 5']) || 0;
-                    let avgNahwu = Math.round((n1+n2+n3+n4)/4) || '-';
+                    let n1 = parseFloat(santri['tamrin 1']) || 0;
+                    let n2 = parseFloat(santri['tamrin 2']) || 0;
+                    let n3 = parseFloat(santri['tamrin 3']) || 0;
+                    let n4 = parseFloat(santri['tamrin 4']) || 0;
+                    
+                    // Menghitung rata-rata Nahwu dan membatasi 2 angka di belakang koma
+                    let avgNahwu = ((n1 + n2 + n3 + n4) / 4).toFixed(2);
+                    
                     nahwuRow.innerHTML = `
                         <div class="card-mini"><span class="m-title">T1</span><span class="m-value">${santri['tamrin 1'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">T2</span><span class="m-value">${santri['tamrin 2'] || '-'}</span></div>
@@ -179,8 +187,14 @@
                     `;
 
                     const fiqhRow = document.getElementById('tamrin-fiqh-row');
-                    let f1 = parseFloat(santri['tamrin fiqh 1']) || 0, f2 = parseFloat(santri['tamrin fiqh 2']) || 0, f3 = parseFloat(santri['tamrin fiqh 3']) || 0, f4 = parseFloat(santri['tamrin fiqh 4']) || 0, f5 = parseFloat(santri['tamrin fiqh 5']) || 0;
-                    let avgFiqh = Math.round((f1+f2+f3+f4)/4) || '-';
+                    let f1 = parseFloat(santri['tamrin fiqh 1']) || 0;
+                    let f2 = parseFloat(santri['tamrin fiqh 2']) || 0;
+                    let f3 = parseFloat(santri['tamrin fiqh 3']) || 0;
+                    let f4 = parseFloat(santri['tamrin fiqh 4']) || 0;
+                    
+                    // Menghitung rata-rata Fiqh dan membatasi 2 angka di belakang koma
+                    let avgFiqh = ((f1 + f2 + f3 + f4) / 4).toFixed(2);
+                    
                     fiqhRow.innerHTML = `
                         <div class="card-mini"><span class="m-title">F1</span><span class="m-value">${santri['tamrin fiqh 1'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">F2</span><span class="m-value">${santri['tamrin fiqh 2'] || '-'}</span></div>
