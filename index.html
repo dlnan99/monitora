@@ -97,7 +97,7 @@
                 <section class="sholawat-section">
                     <div class="sholawat-header">✨ SHOLAWAT FATIH ✨</div>
                     <p class="sholawat-arabic">
-                        اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، الْفَاتِحِ لِمَا أُغْلِقَ، وَالْخَاتِمِ لِمَا سَبَقَ، نَاصِرِ الْحَقِّ بِالْحَقِّ Bound، وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ، وَعَلَى آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ.
+                        اللَّهُمَّ صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ، الْفَاتِحِ لِمَا أُغْلِقَ، وَالْخَاتِمِ لِمَا سَبَقَ، نَاصِرِ الْحَقِّ بِالْحَقِّ ، وَالْهَادِي إِلَى صِرَاطِكَ الْمُسْتَقِيمِ، وَعَلَى آلِهِ حَقَّ قَدْرِهِ وَمِقْدَارِهِ الْعَظِيمِ.
                     </p>
                     <div class="sholawat-footer">Keluarga Besar Kelas 3 Ibtida B</div>
                 </section>
@@ -169,25 +169,23 @@
                     // 4. Render Nilai Tamrin Nahwu & Fiqh (Membaca kolom huruf kecil)
                     const nahwuRow = document.getElementById('tamrin-nahwu-row');
                     let n1 = parseFloat(santri['tamrin 1']) || 0, n2 = parseFloat(santri['tamrin 2']) || 0, n3 = parseFloat(santri['tamrin 3']) || 0, n4 = parseFloat(santri['tamrin 4']) || 0, n5 = parseFloat(santri['tamrin 5']) || 0;
-                    let avgNahwu = Math.round((n1+n2+n3+n4+n5)/5) || '-';
+                    let avgNahwu = Math.round((n1+n2+n3+n4)/4) || '-';
                     nahwuRow.innerHTML = `
                         <div class="card-mini"><span class="m-title">T1</span><span class="m-value">${santri['tamrin 1'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">T2</span><span class="m-value">${santri['tamrin 2'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">T3</span><span class="m-value">${santri['tamrin 3'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">T4</span><span class="m-value">${santri['tamrin 4'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">T5</span><span class="m-value">${santri['tamrin 5'] || '-'}</span></div>
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgNahwu}</span></div>
                     `;
 
                     const fiqhRow = document.getElementById('tamrin-fiqh-row');
                     let f1 = parseFloat(santri['tamrin fiqh 1']) || 0, f2 = parseFloat(santri['tamrin fiqh 2']) || 0, f3 = parseFloat(santri['tamrin fiqh 3']) || 0, f4 = parseFloat(santri['tamrin fiqh 4']) || 0, f5 = parseFloat(santri['tamrin fiqh 5']) || 0;
-                    let avgFiqh = Math.round((f1+f2+f3+f4+f5)/5) || '-';
+                    let avgFiqh = Math.round((f1+f2+f3+f4)/4) || '-';
                     fiqhRow.innerHTML = `
                         <div class="card-mini"><span class="m-title">F1</span><span class="m-value">${santri['tamrin fiqh 1'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">F2</span><span class="m-value">${santri['tamrin fiqh 2'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">F3</span><span class="m-value">${santri['tamrin fiqh 3'] || '-'}</span></div>
                         <div class="card-mini"><span class="m-title">F4</span><span class="m-value">${santri['tamrin fiqh 4'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">F5</span><span class="m-value">${santri['tamrin fiqh 5'] || '-'}</span></div>
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgFiqh}</span></div>
                     `;
 
