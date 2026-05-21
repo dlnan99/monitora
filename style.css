@@ -300,7 +300,7 @@ body {
 
 .grid-tamrin {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr); /* Diubah jadi 5 agar pas dengan hilangnya T5/F5 */
     gap: 6px;
 }
 
