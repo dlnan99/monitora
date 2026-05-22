@@ -108,7 +108,7 @@
 
     <div id="loading-overlay" class="overlay" style="display: none;">
         <div class="spinner"></div>
-        <p>Mengambil data premium...</p>
+        <p>Mohon tunggu ...</p>
     </div>
 
     <script>
@@ -175,9 +175,9 @@
                     
                     nahwuRow.innerHTML = `
                         <div class="card-mini"><span class="m-title">Dzul qo'dah</span><span class="m-value">${santri['tamrin 1'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">T2</span><span class="m-value">${santri['tamrin 2'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">T3</span><span class="m-value">${santri['tamrin 3'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">T4</span><span class="m-value">${santri['tamrin 4'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['tamrin 2'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Muharrom</span><span class="m-value">${santri['tamrin 3'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Shoffar</span><span class="m-value">${santri['tamrin 4'] || '-'}</span></div>
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgNahwu}</span></div>
                     `;
 
@@ -189,10 +189,10 @@
                     let avgFiqh = ((f1 + f2 + f3 + f4) / 4).toFixed(2);
                     
                     fiqhRow.innerHTML = `
-                        <div class="card-mini"><span class="m-title">F1</span><span class="m-value">${santri['tamrin fiqh 1'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">F2</span><span class="m-value">${santri['tamrin fiqh 2'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">F3</span><span class="m-value">${santri['tamrin fiqh 3'] || '-'}</span></div>
-                        <div class="card-mini"><span class="m-title">F4</span><span class="m-value">${santri['tamrin fiqh 4'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulqo'dah</span><span class="m-value">${santri['tamrin fiqh 1'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Dzulhijjah</span><span class="m-value">${santri['tamrin fiqh 2'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Muharrom</span><span class="m-value">${santri['tamrin fiqh 3'] || '-'}</span></div>
+                        <div class="card-mini"><span class="m-title">Shoffar</span><span class="m-value">${santri['tamrin fiqh 4'] || '-'}</span></div>
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgFiqh}</span></div>
                     `;
 
