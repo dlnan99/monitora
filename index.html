@@ -30,7 +30,7 @@
             
             <header class="main-header">
                 <div class="header-top">
-                    <div class="badge-status">Akses Premium</div>
+                    <div class="badge-status">Premium Monitor</div>
                     <button class="btn-logout" onclick="logout()">Keluar</button>
                 </div>
                 <h1 id="nama-santri" class="nama-text">Nama Santri</h1>
@@ -61,13 +61,13 @@
                 </section>
 
                 <section class="section-box">
-                    <h3 class="section-title"><span class="icon">📆</span> PERKEMBANGAN SETORAN</h3>
+                    <h3 class="section-title"><span class="icon">📆</span> PERKEMBANGAN SETORAN (1 BULAN 4 PEKAN)</h3>
                     <div class="grid-pekanan" id="setoran-row">
                         </div>
                 </section>
 
                 <section class="section-box">
-                    <h3 class="section-title"><span class="icon">📝</span> NILAI TAMRIN SANTRI</h3>
+                    <h3 class="section-title"><span class="icon">📝</span> NILAI TAMRIN</h3>
                     <div class="section-content">
                         <div class="sub-tamrin-title">TAMRIN NAHWU</div>
                         <div class="grid-tamrin" id="tamrin-nahwu-row"></div>
@@ -78,21 +78,17 @@
                 </section>
 
                 <section class="section-box status-santri-box">
-                    <h3 class="section-title"><span class="icon">🛡️</span> STATUS SANTRI</h3>
+                    <h3 class="section-title"><span class="icon">🛡|</span> STATUS SANTRI</h3>
                     <div class="status-combined-grid">
                         <div class="status-item">
-                            <span class="status-sub-label">Pendaftaran:</span>
-                            <span id="status-pendaftaran" class="status-val-green font-bold">-</span>
-                        </div>
-                        <div class="status-item text-right">
-                            <span class="status-sub-label">Ujian Sem 1:</span>
+                            <span class="status-sub-label">Status Santri Semester 1:</span>
                             <span id="status-santri-sem1" class="status-val-gold font-bold">-</span>
                         </div>
                     </div>
                 </section>
 
                 <section class="section-box">
-                    <h3 class="section-title"><span class="icon">💵</span> BIAYA SYAHRIYAH (11 BULAN)</h3>
+                    <h3 class="section-title"><span class="icon">💵</span> BIAYA SYAHRIYAH (SYAWAL - SYA'BAN)</h3>
                     <div class="grid-syahriyah" id="syahriyah-row">
                         </div>
                 </section>
@@ -116,8 +112,8 @@
     </div>
 
     <script>
-        // PENTING: Ganti dengan URL Web App Google Apps Script Anda!
-        const webAppUrl = "https://script.google.com/macros/s/AKfycbwkUDsPmPfBv-Kswj9MmxTG_4I64Lv7oO9i8j7a-jFwNRaTwUOc6wOpYg_RltZT29j-/exec";
+        // URL Google Apps Script Anda yang sudah terpasang otomatis
+        const webAppUrl = "https://script.google.com/macros/s/AKfycbyaHCLJcsr8TPOX_7Lpvkg9FU8GfBTMJKIYzM9EEqJoT3_vpm2VCgWknWRghOgYORzC/exec";
 
         async function prosesLogin() {
             const nisInput = document.getElementById('nis-input').value.trim();
@@ -136,18 +132,18 @@
                 const response = await fetch(webAppUrl);
                 const data = await response.json();
                 
-                // Mencocokkan data kolom 'nis' huruf kecil
+                // Pencarian menggunakan key huruf kecil 'nis'
                 const santri = data.find(item => item.nis == nisInput);
 
                 if (santri) {
                     document.getElementById('login-page').style.display = 'none';
                     document.getElementById('dashboard-page').style.display = 'block';
                     
-                    // Render Profil Utama
+                    // 1. Data Utama
                     document.getElementById('nama-santri').innerText = santri['nama'] || '-';
                     document.getElementById('alamat-santri').innerText = santri['alamat'] || '-';
 
-                    // Perhitungan Progres Melingkar (Jurumiyah Max 27, Tasrif Max 45)
+                    // 2. Progres Melingkar (Jurumiyah Max 27 Hal, Tasrif Max 45 Hal)
                     const halJuru = parseFloat(santri['hafalan jurumiyah']) || 0;
                     const percentJuru = Math.min(Math.round((halJuru / 27) * 100), 100);
                     document.getElementById('circle-jurumiyah').style.setProperty('--p', percentJuru);
@@ -160,7 +156,7 @@
                     document.getElementById('text-tasrif-percent').innerText = percentTasrif + "%";
                     document.getElementById('text-tasrif-page').innerText = halTasrif + " / 45 Hal";
 
-                    // Render Setoran 4 Pekan
+                    // 3. Render Perkembangan Setoran 4 Pekan
                     const setoranRow = document.getElementById('setoran-row');
                     setoranRow.innerHTML = `
                         <div class="card-pekan"><span class="p-title">PEKAN 1</span><span class="p-value">${santri['setoran 1'] || '-'}</span></div>
@@ -169,7 +165,7 @@
                         <div class="card-pekan"><span class="p-title">PEKAN 4</span><span class="p-value">${santri['setoran 4'] || '-'}</span></div>
                     `;
 
-                    // Hitung Rata-rata 4 Tamrin Nahwu (2 angka di belakang koma)
+                    // 4. Render Nilai Tamrin Nahwu & Fiqh (Hanya 4 Nilri & Rata-rata 2 angka di belakang koma)
                     const nahwuRow = document.getElementById('tamrin-nahwu-row');
                     let n1 = parseFloat(santri['tamrin 1']) || 0;
                     let n2 = parseFloat(santri['tamrin 2']) || 0;
@@ -185,7 +181,6 @@
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgNahwu}</span></div>
                     `;
 
-                    // Hitung Rata-rata 4 Tamrin Fiqh (2 angka di belakang koma)
                     const fiqhRow = document.getElementById('tamrin-fiqh-row');
                     let f1 = parseFloat(santri['tamrin fiqh 1']) || 0;
                     let f2 = parseFloat(santri['tamrin fiqh 2']) || 0;
@@ -201,18 +196,17 @@
                         <div class="card-mini gold-border"><span class="m-title">RATA</span><span class="m-value">${avgFiqh}</span></div>
                     `;
 
-                    // Render Status Gabungan
-                    document.getElementById('status-pendaftaran').innerText = santri['status pendaftaran'] || '-';
+                    // 5. Full Status Santri Semester 1 (Menghapus pendaftaran dari tampilan)
                     document.getElementById('status-santri-sem1').innerText = santri['status santri semester 1'] || '-';
 
-                    // Render Syahriyah 11 Bulan (Syawal s/d Sya'ban)
+                    // 6. Render Syahriyah 11 Bulan (Syawal s/d Sya'ban)
                     const syahriyahRow = document.getElementById('syahriyah-row');
-                    const bulanList = ['syawal', "dzulqa'dah", 'dzulhijjah', 'muharram', 'safar', "rabi'ul awal", "rabi'ul akhir", 'jumadil awal', 'jumadil akhir', 'rajab', "sya'ban"];
+                    const bulanSyahriyah = ['syawal', "dzulqa'dah", 'dzulhijjah', 'muharram', 'safar', "rabi'ul awal", "rabi'ul akhir", 'jumadil awal', 'jumadil akhir', 'rajab', "sya'ban"];
                     syahriyahRow.innerHTML = '';
-                    bulanList.forEach(bln => {
+                    bulanSyahriyah.forEach(bln => {
                         syahriyahRow.innerHTML += `
                             <div class="card-mini">
-                                <span class="m-title" style="font-size: 8px;">${bln.toUpperCase()}</span>
+                                <span class="m-title" style="font-size:8px;">${bln.toUpperCase()}</span>
                                 <span class="m-value font-emerald">${santri[bln] || '-'}</span>
                             </div>
                         `;
@@ -223,7 +217,7 @@
                 }
             } catch (error) {
                 console.error(error);
-                errorDiv.innerText = "Gagal memuat data, periksa koneksi.";
+                errorDiv.innerText = "Koneksi terganggu. Silakan coba lagi.";
             } finally {
                 loading.style.display = "none";
             }
