@@ -1,107 +1,49 @@
-/* Core Styling - Premium Mobile View Layout */
-* {
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    -webkit-tap-highlight-color: transparent;
+/* ================= 3. UNIFIED STATUS SANTRI (PERBAIKAN FULL WIDTH) ================= */
+.status-santri-box {
+    padding: 22px 20px;
+    background: #fefcf6;
+    border: 1.5px solid #e5d9b6;
+    border-radius: 20px;
 }
 
-body {
-    background-color: #f4f8f6;
-    color: #1e293b;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    letter-spacing: -0.2px;
-}
-
-.app-container {
-    width: 100%;
-    max-width: 480px;
-    background-color: #ffffff;
-    min-height: 100vh;
-    position: relative;
-    box-shadow: 0 25px 60px rgba(0, 40, 32, 0.08);
-}
-
-.page-wrapper {
+/* Mengubah dari sistem grid 2 kolom menjadi susunan baris vertikal yang mewah */
+.status-combined-grid {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-}
-
-/* ================= LOGIN SCREEN ================= */
-.login-bg {
-    background: radial-gradient(circle at top left, #005c49 0%, #00261e 100%);
-    justify-content: center;
-    align-items: center;
-    padding: 24px;
-}
-
-.login-card {
-    background: rgba(255, 255, 255, 0.98);
+    gap: 16px; /* Jarak antar kelompok informasi */
     width: 100%;
-    padding: 44px 28px;
-    border-radius: 32px;
-    text-align: center;
-    box-shadow: 0 30px 60px rgba(0, 15, 12, 0.25);
-    backdrop-filter: blur(10px);
 }
 
-.login-logo {
-    font-size: 48px;
-    margin-bottom: 18px;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%; /* Memaksa konten memanfaatkan lebar penuh kotak */
+    border-right: none !important; /* Menghapus sekat vertikal masa lalu */
+    padding-bottom: 12px;
 }
 
-.login-card h2 {
-    color: #004d3d;
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
+/* Membuat garis pembatas horizontal yang sangat halus antar informasi jika ada beberapa baris */
+.status-item:not(:last-child) {
+    border-bottom: 1px dashed rgba(197, 155, 39, 0.2);
 }
 
-.login-card p {
-    font-size: 13.5px;
-    color: #64748b;
-    margin-top: 8px;
-    margin-bottom: 34px;
-}
-
-.form-group {
-    text-align: left;
-    margin-bottom: 24px;
-}
-
-.form-group label {
-    display: block;
+.status-sub-label {
     font-size: 11px;
     font-weight: 800;
-    color: #004d3d;
-    margin-bottom: 10px;
+    color: #718096;
     text-transform: uppercase;
     letter-spacing: 0.8px;
+    margin-bottom: 2px;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 18px;
-    border-radius: 16px;
-    border: 2px solid #e2e8f0;
-    background-color: #f8fafc;
-    font-size: 16px;
-    font-weight: 600;
-    color: #004d3d;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #c59b27;
-    background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(197, 155, 39, 0.1);
+/* Mengatur teks isi agar mengalir dengan indah, tidak kaku, dan responsif */
+.status-val-gold {
+    font-size: 15px;
+    font-weight: 700;
+    color: #b0871a;
+    line-height: 1.6; /* Memberikan ruang antar baris tulisan agar nyaman dibaca */
+    text-align: left;
 }
 
 #btn-login {
